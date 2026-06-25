@@ -9,6 +9,7 @@ import BookingConfirmation from './components/BookingConfirmation';
 import Dashboard from './components/Dashboard';
 import Chatbot from './components/Chatbot';
 import Wishlist from './components/Wishlist';
+import Profile from './components/Profile';
 import { Star, ShieldCheck, MapPin, Compass, Heart } from 'lucide-react';
 
 import { 
@@ -41,6 +42,14 @@ export default function App() {
 
   // Favorites/Wishlist state
   const [favorites, setFavorites] = useState([]);
+
+  // Personal profile state
+  const [profile, setProfile] = useState({
+    name: 'Shivani',
+    email: 'shivani@gmail.com',
+    phone: '+91 98765 43210',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80'
+  });
 
   // Dynamic reviews state
   const [testimonials, setTestimonials] = useState(mockTestimonials);
@@ -75,6 +84,12 @@ export default function App() {
     const savedReviews = localStorage.getItem('sanchari_travels_reviews');
     if (savedReviews) {
       setTestimonials(JSON.parse(savedReviews));
+    }
+
+    // Load profile
+    const savedProfile = localStorage.getItem('sanchari_travels_profile');
+    if (savedProfile) {
+      setProfile(JSON.parse(savedProfile));
     }
   }, []);
 
@@ -133,6 +148,12 @@ export default function App() {
     } else {
       setView('customize');
     }
+  };
+
+  const handleUpdateProfile = (newProfileData) => {
+    const updated = { ...profile, ...newProfileData };
+    setProfile(updated);
+    localStorage.setItem('sanchari_travels_profile', JSON.stringify(updated));
   };
 
   // Search Submit handler
@@ -675,6 +696,7 @@ export default function App() {
                 setView('customize');
               }
             }}
+            profile={profile}
           />
         )}
 
@@ -700,6 +722,15 @@ export default function App() {
             onRemoveFavorite={handleToggleFavorite}
             onBookItem={handleBookFromWishlist}
             setView={setView}
+          />
+        )}
+
+        {view === 'profile' && (
+          <Profile 
+            profile={profile}
+            onUpdateProfile={handleUpdateProfile}
+            bookingsCount={bookings.length}
+            favoritesCount={favorites.length}
           />
         )}
       </main>

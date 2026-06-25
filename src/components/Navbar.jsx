@@ -1,5 +1,5 @@
 import React from 'react';
-import { Compass, Briefcase, Heart } from 'lucide-react';
+import { Compass, Briefcase, Heart, User } from 'lucide-react';
 
 export default function Navbar({ currentView, setView, bookingsCount, favoritesCount = 0 }) {
   return (
@@ -42,6 +42,15 @@ export default function Navbar({ currentView, setView, bookingsCount, favoritesC
               {bookingsCount > 0 && (
                 <span className="badge">{bookingsCount}</span>
               )}
+            </button>
+          </li>
+          <li>
+            <button 
+              className={`nav-link ${currentView === 'profile' ? 'active' : ''}`}
+              onClick={() => setView('profile')}
+            >
+              <User size={18} />
+              <span>Profile</span>
             </button>
           </li>
         </ul>

@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { CreditCard, ShieldCheck, Ticket, UserCheck, AlertCircle } from 'lucide-react';
 
-export default function CheckoutForm({ type, selectedItem, searchParams, customizations, onPaymentSuccess, onBack }) {
+export default function CheckoutForm({ type, selectedItem, searchParams, customizations, onPaymentSuccess, onBack, profile }) {
   const travelers = searchParams.travelers || searchParams.guests || 1;
   const isHotel = type === 'hotels';
   const isPackage = type === 'packages';
   
-  // Passenger Form State
-  const [passengerName, setPassengerName] = useState('');
-  const [passengerEmail, setPassengerEmail] = useState('');
-  const [passengerPhone, setPassengerPhone] = useState('');
+  // Passenger Form State prefilled from Customer Profile
+  const [passengerName, setPassengerName] = useState(profile?.name || '');
+  const [passengerEmail, setPassengerEmail] = useState(profile?.email || '');
+  const [passengerPhone, setPassengerPhone] = useState(profile?.phone || '');
   const [passportNumber, setPassportNumber] = useState('');
   
   // Billing/Card States
