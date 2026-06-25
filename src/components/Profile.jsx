@@ -1,12 +1,22 @@
 import React, { useState } from 'react';
 import { User, Mail, Phone, Edit2, Check, X, Award, ShieldCheck, Compass, Heart, Briefcase } from 'lucide-react';
 
+const avatarPresets = [
+  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80",
+  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80",
+  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80",
+  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80",
+  "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&q=80",
+  "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80"
+];
+
 export default function Profile({ profile, onUpdateProfile, bookingsCount = 0, favoritesCount = 0 }) {
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
     name: profile.name || 'Shivani',
     email: profile.email || 'shivani@gmail.com',
-    phone: profile.phone || '+91 98765 43210'
+    phone: profile.phone || '+91 98765 43210',
+    avatar: profile.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80'
   });
 
   const handleInputChange = (e) => {
@@ -34,7 +44,8 @@ export default function Profile({ profile, onUpdateProfile, bookingsCount = 0, f
     setFormData({
       name: profile.name,
       email: profile.email,
-      phone: profile.phone
+      phone: profile.phone,
+      avatar: profile.avatar
     });
     setIsEditing(false);
   };
@@ -146,6 +157,43 @@ export default function Profile({ profile, onUpdateProfile, bookingsCount = 0, f
             </div>
           ) : (
             <form onSubmit={handleSave} style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '16px', textAlign: 'left', marginBottom: '24px' }}>
+              <div>
+                <label style={{ fontSize: '0.8rem', color: 'var(--text-muted)', display: 'block', marginBottom: '10px' }}>Choose Profile Picture</label>
+                <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginBottom: '12px' }}>
+                  {avatarPresets.map((avatarUrl, idx) => {
+                    const isSelected = formData.avatar === avatarUrl;
+                    return (
+                      <img 
+                        key={idx}
+                        src={avatarUrl}
+                        alt={`Preset ${idx + 1}`}
+                        onClick={() => setFormData(prev => ({ ...prev, avatar: avatarUrl }))}
+                        style={{
+                          width: '42px',
+                          height: '42px',
+                          borderRadius: '50%',
+                          objectFit: 'cover',
+                          cursor: 'pointer',
+                          border: isSelected ? '3.5px solid var(--primary)' : '2px solid transparent',
+                          padding: isSelected ? '1px' : '0',
+                          transition: 'all 0.15s'
+                        }}
+                      />
+                    );
+                  })}
+                </div>
+                
+                <input 
+                  type="text" 
+                  name="avatar"
+                  value={formData.avatar}
+                  onChange={handleInputChange}
+                  placeholder="Or paste custom image URL..."
+                  className="search-input"
+                  style={{ width: '100%', height: '36px', padding: '6px 12px', borderRadius: '8px', fontSize: '0.85rem' }}
+                />
+              </div>
+
               <div>
                 <label style={{ fontSize: '0.8rem', color: 'var(--text-muted)', display: 'block', marginBottom: '6px' }}>Full Name</label>
                 <input 
