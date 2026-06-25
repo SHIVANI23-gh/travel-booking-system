@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { User, Mail, Phone, Edit2, Check, X, Award, ShieldCheck, Compass, Heart, Briefcase } from 'lucide-react';
 
 const avatarPresets = [
-  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80",
-  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80",
-  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80",
-  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80",
-  "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&q=80",
-  "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80"
+  "https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?auto=format&fit=crop&w=150&q=80", // Cute Bunny
+  "https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?auto=format&fit=crop&w=150&q=80", // Cute Panda
+  "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=150&q=80", // Cute Cat
+  "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=150&q=80", // Cute Puppy
+  "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=150&q=80", // Cute Baby Bear
+  "https://images.unsplash.com/photo-1551244072-5d12893278ab?auto=format&fit=crop&w=150&q=80"  // Cute Penguin
 ];
 
 export default function Profile({ profile, onUpdateProfile, bookingsCount = 0, favoritesCount = 0 }) {

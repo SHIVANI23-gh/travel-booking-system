@@ -48,7 +48,7 @@ export default function App() {
     name: 'Shivani',
     email: 'shivani@gmail.com',
     phone: '+91 98765 43210',
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80'
+    avatar: 'https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?auto=format&fit=crop&w=150&q=80'
   });
 
   // Dynamic reviews state
