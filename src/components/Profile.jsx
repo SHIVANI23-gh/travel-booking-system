@@ -24,6 +24,16 @@ export default function Profile({ profile, onUpdateProfile, bookingsCount = 0, f
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  const handleStartEdit = () => {
+    setFormData({
+      name: profile.name,
+      email: profile.email,
+      phone: profile.phone,
+      avatar: profile.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80'
+    });
+    setIsEditing(true);
+  };
+
   const handleSave = (e) => {
     e.preventDefault();
     if (!formData.name.trim() || !formData.email.trim() || !formData.phone.trim()) {
@@ -81,7 +91,7 @@ export default function Profile({ profile, onUpdateProfile, bookingsCount = 0, f
           {/* Avatar frame */}
           <div style={{ position: 'relative', marginBottom: '20px' }}>
             <img 
-              src={profile.avatar || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=180&q=80"} 
+              src={(isEditing ? formData.avatar : profile.avatar) || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=180&q=80"} 
               alt="Avatar" 
               style={{ 
                 width: '120px', 
@@ -148,7 +158,7 @@ export default function Profile({ profile, onUpdateProfile, bookingsCount = 0, f
 
               <button 
                 className="action-btn" 
-                onClick={() => setIsEditing(true)}
+                onClick={handleStartEdit}
                 style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', background: 'var(--primary)', marginTop: '8px' }}
               >
                 <Edit2 size={14} />
