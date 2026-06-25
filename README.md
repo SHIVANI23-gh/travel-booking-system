@@ -60,13 +60,11 @@ Follow these step-by-step instructions to push the code and deploy it live on Gi
 Open your terminal in the project folder and run:
 ```powershell
 # Add your GitHub repository remote
-git remote add origin https://github.com/<YOUR_GITHUB_USERNAME>/travel-booking-system.git
+git remote add origin https://github.com/SHIVANI23-gh/travel-booking-system.git
 
 # Push the main branch code to GitHub
 git push -u origin main
 ```
-*(Make sure to replace `<YOUR_GITHUB_USERNAME>` with your actual GitHub username!)*
-
 ### 3. Deploy the Site Live
 Run the deployment script:
 ```powershell
@@ -81,4 +79,4 @@ This command automatically triggers:
 2. Click on **Settings** (top tab) -> **Pages** (left sidebar).
 3. Under **Build and deployment** -> **Branch**, make sure the source branch is set to **`gh-pages`** and folder `/ (root)`.
 4. Save the setting. Your app will be live at:
-   `https://<YOUR_GITHUB_USERNAME>.github.io/travel-booking-system/`
+   `https://SHIVANI23-gh.github.io/travel-booking-system/`
