@@ -8,7 +8,8 @@ import CheckoutForm from './components/CheckoutForm';
 import BookingConfirmation from './components/BookingConfirmation';
 import Dashboard from './components/Dashboard';
 import Chatbot from './components/Chatbot';
-import { Star, ShieldCheck, MapPin, Compass } from 'lucide-react';
+import Wishlist from './components/Wishlist';
+import { Star, ShieldCheck, MapPin, Compass, Heart } from 'lucide-react';
 
 import { 
   mockFlights, 
@@ -21,7 +22,7 @@ import {
 } from './data/mockData';
 
 export default function App() {
-  // Navigation / Router state: search, results, customize, checkout, confirmation, dashboard
+  // Navigation / Router state: search, results, customize, checkout, confirmation, dashboard, wishlist
   const [view, setView] = useState('search');
   const [searchType, setSearchType] = useState('flights'); // flights, hotels, packages
   const [searchParams, setSearchParams] = useState(null);
@@ -37,6 +38,15 @@ export default function App() {
 
   // Global Bookings list (stored in LocalStorage)
   const [bookings, setBookings] = useState([]);
+
+  // Favorites/Wishlist state
+  const [favorites, setFavorites] = useState([]);
+
+  // Dynamic reviews state
+  const [testimonials, setTestimonials] = useState(mockTestimonials);
+
+  // Testimonials review form state
+  const [reviewForm, setReviewForm] = useState({ name: '', role: '', rating: 5, comment: '' });
 
   // Results page filter state
   const [filters, setFilters] = useState({
@@ -54,12 +64,75 @@ export default function App() {
     if (savedBookings) {
       setBookings(JSON.parse(savedBookings));
     }
+
+    // Load favorites
+    const savedFavorites = localStorage.getItem('sanchari_travels_favorites');
+    if (savedFavorites) {
+      setFavorites(JSON.parse(savedFavorites));
+    }
+
+    // Load reviews
+    const savedReviews = localStorage.getItem('sanchari_travels_reviews');
+    if (savedReviews) {
+      setTestimonials(JSON.parse(savedReviews));
+    }
   }, []);
 
   // Save bookings to localStorage
   const saveBookings = (newBookings) => {
     setBookings(newBookings);
     localStorage.setItem('sanchari_travels_bookings', JSON.stringify(newBookings));
+  };
+
+  const saveFavorites = (newFavorites) => {
+    setFavorites(newFavorites);
+    localStorage.setItem('sanchari_travels_favorites', JSON.stringify(newFavorites));
+  };
+
+  const handleToggleFavorite = (item, itemType) => {
+    const exists = favorites.some(fav => fav.id === item.id && fav.type === itemType);
+    let updated;
+    if (exists) {
+      updated = favorites.filter(fav => !(fav.id === item.id && fav.type === itemType));
+    } else {
+      updated = [...favorites, { ...item, type: itemType }];
+    }
+    saveFavorites(updated);
+  };
+
+  const handleAddReview = (newReview) => {
+    const updated = [newReview, ...testimonials];
+    setTestimonials(updated);
+    localStorage.setItem('sanchari_travels_reviews', JSON.stringify(updated));
+  };
+
+  const handleBookFromWishlist = (item) => {
+    setSearchType(item.type);
+    setSelectedItem(item);
+    setCustomizations(null);
+    
+    // Set safe defaults for search parameters so customize and checkout screens operate properly
+    const dateVal = "2026-07-15";
+    const checkInVal = "2026-07-15";
+    const checkOutVal = "2026-07-22";
+
+    setSearchParams({
+      type: item.type,
+      from: item.type === 'trains' ? 'DEL (New Delhi RS)' : item.type === 'buses' ? 'BLR (Kempegowda BS)' : 'DEL (New Delhi)',
+      to: item.type === 'trains' ? 'BOM (Mumbai Central)' : item.type === 'buses' ? 'COK (Kochi Bus Stand)' : 'GOI (Goa)',
+      date: dateVal,
+      checkIn: checkInVal,
+      checkOut: checkOutVal,
+      travelers: 1,
+      guests: 1,
+      cabinClass: 'economy'
+    });
+
+    if (item.type === 'packages') {
+      setView('checkout');
+    } else {
+      setView('customize');
+    }
   };
 
   // Search Submit handler
@@ -333,6 +406,32 @@ export default function App() {
     return rawList;
   };
 
+  const handleReviewSubmit = (e) => {
+    e.preventDefault();
+    if (!reviewForm.name.trim() || !reviewForm.role.trim() || !reviewForm.comment.trim()) {
+      alert("Please fill out all fields.");
+      return;
+    }
+    const avatars = [
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80",
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80",
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80",
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&q=80",
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80"
+    ];
+    const newReview = {
+      id: 'rev-' + Math.random().toString(36).substr(2, 6),
+      name: reviewForm.name,
+      role: reviewForm.role,
+      rating: reviewForm.rating,
+      comment: reviewForm.comment,
+      avatar: avatars[Math.floor(Math.random() * avatars.length)]
+    };
+    handleAddReview(newReview);
+    setReviewForm({ name: '', role: '', rating: 5, comment: '' });
+    alert("Thank you! Your review has been saved successfully.");
+  };
+
   const filteredListings = getFilteredListings();
   const activeBookingsCount = bookings.filter(b => b.status === 'confirmed').length;
 
@@ -366,6 +465,7 @@ export default function App() {
         currentView={view} 
         setView={setView} 
         bookingsCount={activeBookingsCount} 
+        favoritesCount={favorites.length}
       />
 
       {/* Main Content Area */}
@@ -413,7 +513,7 @@ export default function App() {
                   <h2 className="section-title">What Our Travelers Say</h2>
                 </div>
                 <div className="testimonials-grid">
-                  {mockTestimonials.map((t) => (
+                  {testimonials.map((t) => (
                     <div key={t.id} className="testimonial-card">
                       <div>
                         <div style={{ display: 'flex', gap: '2px', color: 'var(--warning)', marginBottom: '16px' }}>
@@ -434,6 +534,72 @@ export default function App() {
                       </div>
                     </div>
                   ))}
+                </div>
+
+                {/* Interactive Add Review Form */}
+                <div className="add-review-form" style={{ marginTop: '50px', background: 'var(--bg-secondary)', border: '1px solid var(--glass-border)', padding: '32px', borderRadius: '16px', maxWidth: '600px', margin: '50px auto 0 auto', textAlign: 'left' }}>
+                  <h3 style={{ fontSize: '1.4rem', marginBottom: '8px', fontFamily: 'var(--font-display)', color: 'var(--text-main)' }}>Share Your Experience</h3>
+                  <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginBottom: '24px' }}>Help other travelers map out their vacations by reviewing Sanchari Travels.</p>
+                  
+                  <form onSubmit={handleReviewSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
+                      <div>
+                        <label style={{ fontSize: '0.85rem', color: 'var(--text-muted)', display: 'block', marginBottom: '6px' }}>Full Name</label>
+                        <input 
+                          type="text" 
+                          required 
+                          placeholder="Aditya Sen" 
+                          value={reviewForm.name} 
+                          onChange={(e) => setReviewForm(prev => ({ ...prev, name: e.target.value }))}
+                          className="search-input" 
+                          style={{ padding: '8px 12px', height: '40px', fontSize: '0.9rem', width: '100%', borderRadius: '8px' }}
+                        />
+                      </div>
+                      <div>
+                        <label style={{ fontSize: '0.85rem', color: 'var(--text-muted)', display: 'block', marginBottom: '6px' }}>Traveler Persona (e.g. Backpacker)</label>
+                        <input 
+                          type="text" 
+                          required 
+                          placeholder="Frequent Flyer" 
+                          value={reviewForm.role} 
+                          onChange={(e) => setReviewForm(prev => ({ ...prev, role: e.target.value }))}
+                          className="search-input" 
+                          style={{ padding: '8px 12px', height: '40px', fontSize: '0.9rem', width: '100%', borderRadius: '8px' }}
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label style={{ fontSize: '0.85rem', color: 'var(--text-muted)', display: 'block', marginBottom: '6px' }}>Star Rating</label>
+                      <div style={{ display: 'flex', gap: '6px', color: 'var(--warning)', cursor: 'pointer' }}>
+                        {[1, 2, 3, 4, 5].map((stars) => (
+                          <Star 
+                            key={stars} 
+                            size={24} 
+                            style={{ fill: stars <= reviewForm.rating ? 'currentColor' : 'none' }}
+                            onClick={() => setReviewForm(prev => ({ ...prev, rating: stars }))} 
+                          />
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <label style={{ fontSize: '0.85rem', color: 'var(--text-muted)', display: 'block', marginBottom: '6px' }}>Comments / Review</label>
+                      <textarea 
+                        required 
+                        rows="3" 
+                        placeholder="The booking experience was extremely seamless and visual ticket downloads were instant..." 
+                        value={reviewForm.comment} 
+                        onChange={(e) => setReviewForm(prev => ({ ...prev, comment: e.target.value }))}
+                        className="search-input" 
+                        style={{ padding: '10px 12px', fontSize: '0.9rem', width: '100%', borderRadius: '8px', fontFamily: 'inherit', resize: 'vertical' }}
+                      />
+                    </div>
+
+                    <button className="action-btn" type="submit" style={{ alignSelf: 'flex-start', background: 'var(--primary)' }}>
+                      Submit Testimonial
+                    </button>
+                  </form>
                 </div>
               </div>
             </section>
@@ -478,6 +644,8 @@ export default function App() {
                 onSelect={handleSelectListing}
                 sortBy={sortBy}
                 setSortBy={setSortBy}
+                favorites={favorites}
+                onToggleFavorite={handleToggleFavorite}
               />
             </div>
           </div>
@@ -525,23 +693,122 @@ export default function App() {
             setView={setView} 
           />
         )}
+
+        {view === 'wishlist' && (
+          <Wishlist 
+            favorites={favorites}
+            onRemoveFavorite={handleToggleFavorite}
+            onBookItem={handleBookFromWishlist}
+            setView={setView}
+          />
+        )}
       </main>
 
       {/* Floating AI Chatbot Assistant */}
       <Chatbot />
 
       {/* Footer */}
-      <footer style={{ background: 'var(--bg-secondary)', borderTop: '1px solid var(--glass-border)', padding: '40px 0', textAlign: 'center', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-        <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '16px', alignItems: 'center' }}>
-          <div className="logo" style={{ cursor: 'default' }}>
-            <Compass size={22} />
-            <span style={{ fontSize: '1.25rem' }}>Sanchari Travels</span>
+      <footer style={{ background: 'var(--bg-secondary)', borderTop: '1px solid var(--glass-border)', padding: '60px 0 20px 0', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+        <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '40px', marginBottom: '40px', textAlign: 'left' }}>
+          
+          {/* Column 1: Brand & Socials */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            <div className="logo" style={{ cursor: 'default', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Compass size={24} style={{ color: 'var(--primary)' }} />
+              <span style={{ fontSize: '1.4rem', color: 'var(--text-main)', fontWeight: 700 }}>Sanchari Travels</span>
+            </div>
+            <p style={{ lineHeight: '1.6', fontSize: '0.8rem' }}>
+              Experience the best of India. Seamless airline, IRCTC railway, and state bus terminal handshakes mapped dynamically for you.
+            </p>
+            <div style={{ display: 'flex', gap: '12px', marginTop: '8px' }}>
+              {['Facebook', 'Twitter', 'Instagram', 'LinkedIn'].map((social) => (
+                <a 
+                  href={`#${social.toLowerCase()}`} 
+                  key={social} 
+                  style={{ 
+                    width: '32px', 
+                    height: '32px', 
+                    borderRadius: '50%', 
+                    background: 'rgba(255,255,255,0.03)', 
+                    border: '1px solid var(--glass-border)', 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    justifyContent: 'center', 
+                    color: 'var(--text-muted)',
+                    textDecoration: 'none',
+                    fontSize: '0.75rem',
+                    transition: 'all 0.2s'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = 'var(--primary)';
+                    e.currentTarget.style.color = 'var(--primary)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = 'var(--glass-border)';
+                    e.currentTarget.style.color = 'var(--text-muted)';
+                  }}
+                >
+                  {social[0]}
+                </a>
+              ))}
+            </div>
           </div>
-          <p>© 2026 Sanchari Travels Booking Inc. Built professionally using React & Vanilla CSS.</p>
-          <div style={{ display: 'flex', gap: '24px' }}>
-            <a href="#privacy" style={{ color: 'inherit', textDecoration: 'none' }}>Privacy Policy</a>
-            <a href="#terms" style={{ color: 'inherit', textDecoration: 'none' }}>Terms of Service</a>
-            <a href="#support" style={{ color: 'inherit', textDecoration: 'none' }}>Virtual Agent Support</a>
+
+          {/* Column 2: Navigation Links */}
+          <div>
+            <h4 style={{ color: 'var(--text-main)', marginBottom: '20px', fontWeight: 600, fontSize: '0.95rem' }}>Explore Services</h4>
+            <ul style={{ listStyle: 'none', padding: '0', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <li><button onClick={() => { setSearchType('flights'); setView('results'); }} style={{ background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', fontSize: '0.8rem', textAlign: 'left' }}>Book Flights</button></li>
+              <li><button onClick={() => { setSearchType('hotels'); setView('results'); }} style={{ background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', fontSize: '0.8rem', textAlign: 'left' }}>Luxury Hotel Stays</button></li>
+              <li><button onClick={() => { setSearchType('packages'); setView('results'); }} style={{ background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', fontSize: '0.8rem', textAlign: 'left' }}>Holiday Packages</button></li>
+              <li><button onClick={() => { setSearchType('trains'); setView('results'); }} style={{ background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', fontSize: '0.8rem', textAlign: 'left' }}>IRCTC Railways</button></li>
+            </ul>
+          </div>
+
+          {/* Column 3: Contact & Support */}
+          <div>
+            <h4 style={{ color: 'var(--text-main)', marginBottom: '20px', fontWeight: 600, fontSize: '0.95rem' }}>Contact Support</h4>
+            <ul style={{ listStyle: 'none', padding: '0', display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '0.8rem', lineHeight: '1.5' }}>
+              <li>📞 1-800-SANCHARI (24/7 Helpline)</li>
+              <li>📧 support@sancharitravels.com</li>
+              <li>🏢 4th Floor, Taj Chambers, Colaba, Mumbai, India</li>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--secondary)', fontWeight: 600 }}>
+                <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--secondary)', display: 'inline-block', animation: 'pulse 1.5s infinite' }}></span>
+                All Terminals Live
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 4: Newsletter */}
+          <div>
+            <h4 style={{ color: 'var(--text-main)', marginBottom: '20px', fontWeight: 600, fontSize: '0.95rem' }}>Newsletter Signup</h4>
+            <p style={{ fontSize: '0.8rem', lineHeight: '1.5', marginBottom: '16px' }}>
+              Subscribe to get seasonal holiday discount alerts directly in your inbox.
+            </p>
+            <form onSubmit={(e) => { e.preventDefault(); alert("Successfully subscribed! Check your mock inbox for verification."); e.target.reset(); }} style={{ display: 'flex', gap: '8px' }}>
+              <input 
+                type="email" 
+                placeholder="email@example.com" 
+                required
+                className="search-input"
+                style={{ padding: '8px 12px', fontSize: '0.8rem', width: '100%', height: '36px', borderRadius: '8px' }}
+              />
+              <button className="action-btn" type="submit" style={{ padding: '0 12px', fontSize: '0.8rem', height: '36px', background: 'var(--primary)', width: 'auto', border: 'none' }}>
+                Join
+              </button>
+            </form>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div style={{ borderTop: '1px solid var(--glass-border)', paddingTop: '20px', fontSize: '0.75rem', textAlign: 'center' }}>
+          <div className="container" style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
+            <p>© 2026 Sanchari Travels Booking Inc. Built professionally using React & Vanilla CSS.</p>
+            <div style={{ display: 'flex', gap: '20px' }}>
+              <a href="#privacy" style={{ color: 'inherit', textDecoration: 'none' }}>Privacy Policy</a>
+              <a href="#terms" style={{ color: 'inherit', textDecoration: 'none' }}>Terms of Service</a>
+              <a href="#cookie" style={{ color: 'inherit', textDecoration: 'none' }}>Cookie Policy</a>
+            </div>
           </div>
         </div>
       </footer>

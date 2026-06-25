@@ -1,7 +1,7 @@
 import React from 'react';
-import { Compass, Briefcase, User, Moon, Sun } from 'lucide-react';
+import { Compass, Briefcase, Heart } from 'lucide-react';
 
-export default function Navbar({ currentView, setView, bookingsCount }) {
+export default function Navbar({ currentView, setView, bookingsCount, favoritesCount = 0 }) {
   return (
     <nav className="navbar">
       <div className="container navbar-container">
@@ -18,6 +18,18 @@ export default function Navbar({ currentView, setView, bookingsCount }) {
             >
               <Compass size={18} />
               <span>Explore</span>
+            </button>
+          </li>
+          <li>
+            <button 
+              className={`nav-link ${currentView === 'wishlist' ? 'active' : ''}`}
+              onClick={() => setView('wishlist')}
+            >
+              <Heart size={18} />
+              <span>Wishlist</span>
+              {favoritesCount > 0 && (
+                <span className="badge" style={{ backgroundColor: 'var(--primary)' }}>{favoritesCount}</span>
+              )}
             </button>
           </li>
           <li>

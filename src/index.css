@@ -2006,3 +2006,113 @@ h1, h2, h3, h4, h5, h6 {
   color: rgba(0, 0, 0, 0.2);
   cursor: not-allowed;
 }
+
+/* Sanchari Travels Mobile Responsiveness Rules */
+@media (max-width: 1024px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Navbar bottom-bar simulation / compact tabs */
+  .navbar {
+    height: auto;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  .navbar-container {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .nav-links {
+    width: 100%;
+    justify-content: center;
+    gap: 12px;
+  }
+  .nav-link {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+  }
+
+  /* Search Engine Widget */
+  .search-widget {
+    padding: 20px;
+  }
+  .search-tabs {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 8px;
+    gap: 8px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .search-tab-btn {
+    padding: 6px 12px;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+  }
+  .search-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* Horizontal swipe support for train compartment grids on touch devices */
+  .train-bays-container {
+    overflow-x: auto;
+    padding-bottom: 16px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .train-bay {
+    min-width: 310px;
+    grid-template-columns: 1.2fr 15px 1.2fr 15px 1fr;
+    flex-shrink: 0;
+    padding: 16px;
+  }
+  .train-walkway {
+    font-size: 0.55rem;
+  }
+
+  /* Bus Deck Stacking */
+  .bus-decks-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  /* Premium Footer adjustment for smaller devices */
+  footer .container {
+    grid-template-columns: 1fr !important;
+    gap: 30px;
+    text-align: center;
+  }
+  footer div {
+    text-align: center !important;
+    align-items: center !important;
+  }
+  footer form {
+    justify-content: center;
+  }
+  footer .bottom-bar .container {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2.2rem;
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 32px;
+  }
+  .hotel-tag, .package-duration {
+    font-size: 0.7rem;
+    padding: 2px 8px;
+  }
+}
