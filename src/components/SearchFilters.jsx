@@ -76,8 +76,8 @@ export default function SearchFilters({ type, filters, setFilters }) {
           style={{ width: '100%', accentColor: 'var(--primary)', cursor: 'pointer' }}
         />
         <div className="filter-price-inputs">
-          <div className="filter-price-box">Min: ${type === 'flights' ? '2,000' : type === 'hotels' ? '5,000' : type === 'packages' ? '15,000' : type === 'trains' ? '300' : '200'}</div>
-          <div className="filter-price-box">Max: ${filters.maxPrice.toLocaleString()}</div>
+          <div className="filter-price-box">Min: ₹{type === 'flights' ? '2,000' : type === 'hotels' ? '5,000' : type === 'packages' ? '15,000' : type === 'trains' ? '300' : '200'}</div>
+          <div className="filter-price-box">Max: ₹{filters.maxPrice.toLocaleString()}</div>
         </div>
       </div>
 

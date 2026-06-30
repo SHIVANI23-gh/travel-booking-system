@@ -175,7 +175,7 @@ export default function Wishlist({ favorites, onRemoveFavorite, onBookItem, setV
                   }}>
                     <div>
                       <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text-main)' }}>
-                        ${item.price.toLocaleString()}
+                        ₹{item.price.toLocaleString()}
                       </div>
                       <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
                         {isHotel ? 'per night' : isPackage ? 'per person' : 'base fare'}

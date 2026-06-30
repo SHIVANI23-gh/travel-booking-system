@@ -205,11 +205,11 @@ export default function App() {
     // Reset filters for new search types
     setFilters({
       maxPrice: 
-        params.type === 'flights' ? 3000 : 
-        params.type === 'hotels' ? 2500 : 
-        params.type === 'packages' ? 5000 : 
-        params.type === 'trains' ? 500 : 
-        150,
+        params.type === 'flights' ? 300000 : 
+        params.type === 'hotels' ? 250000 : 
+        params.type === 'packages' ? 500000 : 
+        params.type === 'trains' ? 50000 : 
+        15000,
       ratings: [],
       stops: [],
       amenities: []
@@ -549,10 +549,10 @@ export default function App() {
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '30px', marginTop: '40px' }}>
                 {[
-                  { name: "Paris", tag: "Romantic Escape", desc: "Soak in historic art, French cuisine, Seine boat cruises, and luxury hotels.", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80", price: "$350/night" },
-                  { name: "Singapore", tag: "Futuristic Oasis", desc: "Experience Marina Bay sands rooftop pools, Gardens by the Bay, and rich cuisines.", img: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=400&q=80", price: "$450/night" },
-                  { name: "Tokyo", tag: "Zen Luxury", desc: "Cozy imperial gardens, thermal Onsen baths, and Mount Fuji skyline views.", img: "https://images.unsplash.com/photo-1502784444187-359ac186c5bb?auto=format&fit=crop&w=400&q=80", price: "$650/night" },
-                  { name: "New York", tag: "Metropolitan Magic", desc: "Stay at legendary Fifth Avenue hotels and explore Central Park lanes.", img: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=400&q=80", price: "$550/night" }
+                  { name: "Paris", tag: "Romantic Escape", desc: "Soak in historic art, French cuisine, Seine boat cruises, and luxury hotels.", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80", price: "₹25,000/night" },
+                  { name: "Singapore", tag: "Futuristic Oasis", desc: "Experience Marina Bay sands rooftop pools, Gardens by the Bay, and rich cuisines.", img: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=400&q=80", price: "₹32,000/night" },
+                  { name: "Tokyo", tag: "Zen Luxury", desc: "Cozy imperial gardens, thermal Onsen baths, and Mount Fuji skyline views.", img: "https://images.unsplash.com/photo-1502784444187-359ac186c5bb?auto=format&fit=crop&w=400&q=80", price: "₹55,000/night" },
+                  { name: "New York", tag: "Metropolitan Magic", desc: "Stay at legendary Fifth Avenue hotels and explore Central Park lanes.", img: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=400&q=80", price: "₹42,000/night" }
                 ].map((dest, idx) => (
                   <div key={idx} className="package-card" style={{ cursor: 'pointer' }} onClick={() => handleSearch({ type: 'hotels', destination: dest.name, checkIn: '2026-07-15', checkOut: '2026-07-22', guests: 2 })}>
                     <div className="package-img-wrapper" style={{ height: '180px' }}>

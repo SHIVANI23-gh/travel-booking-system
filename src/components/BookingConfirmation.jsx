@@ -111,7 +111,7 @@ export default function BookingConfirmation({ booking, setView }) {
             <div>
               <div className="pass-field-label">Amount Paid</div>
               <div className="pass-field-val" style={{ color: 'var(--secondary)' }}>
-                ${billing.totalPaid.toLocaleString()}
+                ₹{billing.totalPaid.toLocaleString()}
               </div>
             </div>
 

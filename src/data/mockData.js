@@ -10,15 +10,15 @@ export const mockFlights = [
     arrivalTime: "01:45 AM (+1 day)",
     duration: "6h 45m",
     stops: 0,
-    price: 380,
+    price: 28000,
     class: "Economy",
     baggage: "1 Carry-on (7kg), 1 Checked (25kg)",
     rating: 4.9,
     seatsAvailable: 28,
     cabinClasses: {
-      economy: { price: 380, name: "Economy Class" },
-      business: { price: 1250, name: "Business Class" },
-      first: { price: 2500, name: "First Class Suite" }
+      economy: { price: 28000, name: "Economy Class" },
+      business: { price: 98000, name: "Business Class" },
+      first: { price: 180000, name: "First Class Suite" }
     }
   },
   {
@@ -32,15 +32,15 @@ export const mockFlights = [
     arrivalTime: "01:55 PM",
     duration: "2h 40m",
     stops: 0,
-    price: 65,
+    price: 4500,
     class: "Economy",
     baggage: "1 Carry-on (7kg), 1 Checked (15kg)",
     rating: 4.7,
     seatsAvailable: 15,
     cabinClasses: {
-      economy: { price: 65, name: "Economy Class" },
-      business: { price: 140, name: "Business Class" },
-      first: { price: 250, name: "First Class" }
+      economy: { price: 4500, name: "Economy Class" },
+      business: { price: 9500, name: "Business Class" },
+      first: { price: 16000, name: "First Class" }
     }
   },
   {
@@ -54,15 +54,15 @@ export const mockFlights = [
     arrivalTime: "11:45 AM",
     duration: "8h 15m",
     stops: 0,
-    price: 450,
+    price: 35000,
     class: "Economy",
     baggage: "1 Carry-on (10kg), 1 Checked (23kg)",
     rating: 4.6,
     seatsAvailable: 42,
     cabinClasses: {
-      economy: { price: 450, name: "Economy Class" },
-      business: { price: 1450, name: "Club World Business" },
-      first: { price: 2800, name: "First Class" }
+      economy: { price: 35000, name: "Economy Class" },
+      business: { price: 120000, name: "Club World Business" },
+      first: { price: 250000, name: "First Class" }
     }
   },
   {
@@ -76,15 +76,15 @@ export const mockFlights = [
     arrivalTime: "07:45 PM",
     duration: "1h 45m",
     stops: 0,
-    price: 55,
+    price: 3800,
     class: "Economy",
     baggage: "1 Carry-on (7kg), 1 Checked (20kg)",
     rating: 4.8,
     seatsAvailable: 28,
     cabinClasses: {
-      economy: { price: 55, name: "Economy Class" },
-      business: { price: 120, name: "Business Class" },
-      first: { price: 220, name: "First Class" }
+      economy: { price: 3800, name: "Economy Class" },
+      business: { price: 8500, name: "Business Class" },
+      first: { price: 14500, name: "First Class" }
     }
   },
   {
@@ -98,15 +98,15 @@ export const mockFlights = [
     arrivalTime: "04:25 PM",
     duration: "7h 10m",
     stops: 0,
-    price: 520,
+    price: 42000,
     class: "Economy",
     baggage: "1 Carry-on (7kg), 1 Checked (20kg)",
     rating: 4.8,
     seatsAvailable: 15,
     cabinClasses: {
-      economy: { price: 520, name: "Economy Class" },
-      business: { price: 1850, name: "Business Class" },
-      first: { price: 3400, name: "First Class Suite" }
+      economy: { price: 42000, name: "Economy Class" },
+      business: { price: 145000, name: "Business Class" },
+      first: { price: 280000, name: "First Class Suite" }
     }
   },
   {
@@ -120,15 +120,15 @@ export const mockFlights = [
     arrivalTime: "09:45 AM",
     duration: "2h 15m",
     stops: 0,
-    price: 50,
+    price: 4200,
     class: "Economy",
     baggage: "1 Carry-on (7kg), 1 Checked (25kg)",
     rating: 4.6,
     seatsAvailable: 42,
     cabinClasses: {
-      economy: { price: 50, name: "Economy Class" },
-      business: { price: 130, name: "Business Class" },
-      first: { price: 240, name: "First Class" }
+      economy: { price: 4200, name: "Economy Class" },
+      business: { price: 8800, name: "Business Class" },
+      first: { price: 15000, name: "First Class" }
     }
   }
 ];
@@ -144,13 +144,13 @@ export const mockTrains = [
     arrivalTime: "08:50 PM",
     duration: "2h 15m",
     stops: 1,
-    price: 85,
+    price: 6800,
     rating: 4.7,
     seatsAvailable: 110,
     cabinClasses: {
-      economy: { price: 85, name: "Standard Class" },
-      business: { price: 145, name: "Standard Premier" },
-      first: { price: 220, name: "Business Premier Luxury" }
+      economy: { price: 6800, name: "Standard Class" },
+      business: { price: 11500, name: "Standard Premier" },
+      first: { price: 18000, name: "Business Premier Luxury" }
     }
   },
   {
@@ -163,13 +163,13 @@ export const mockTrains = [
     arrivalTime: "08:35 AM (+1 day)",
     duration: "15h 40m",
     stops: 5,
-    price: 35,
+    price: 2450,
     rating: 4.8,
     seatsAvailable: 64,
     cabinClasses: {
-      economy: { price: 35, name: "AC 3 Tier (3A)" },
-      business: { price: 55, name: "AC 2 Tier (2A)" },
-      first: { price: 75, name: "AC First Class (1A)" }
+      economy: { price: 2450, name: "AC 3 Tier (3A)" },
+      business: { price: 3850, name: "AC 2 Tier (2A)" },
+      first: { price: 4750, name: "AC First Class (1A)" }
     }
   },
   {
@@ -182,13 +182,13 @@ export const mockTrains = [
     arrivalTime: "06:40 PM",
     duration: "2h 30m",
     stops: 3,
-    price: 110,
+    price: 8800,
     rating: 4.9,
     seatsAvailable: 64,
     cabinClasses: {
-      economy: { price: 110, name: "Ordinary Reserved Seat" },
-      business: { price: 165, name: "Green Car Premium" },
-      first: { price: 280, name: "Gran Class Luxury Suite" }
+      economy: { price: 8800, name: "Ordinary Reserved Seat" },
+      business: { price: 13500, name: "Green Car Premium" },
+      first: { price: 22000, name: "Gran Class Luxury Suite" }
     }
   },
   {
@@ -201,12 +201,12 @@ export const mockTrains = [
     arrivalTime: "02:40 PM",
     duration: "8h 50m",
     stops: 7,
-    price: 25,
+    price: 1850,
     rating: 4.7,
     seatsAvailable: 35,
     cabinClasses: {
-      economy: { price: 25, name: "AC Chair Car (CC)" },
-      business: { price: 45, name: "Executive Chair Car (EC)" }
+      economy: { price: 1850, name: "AC Chair Car (CC)" },
+      business: { price: 3200, name: "Executive Chair Car (EC)" }
     }
   }
 ];
@@ -222,12 +222,12 @@ export const mockBuses = [
     departureTime: "09:30 PM",
     arrivalTime: "05:45 AM (+1 day)",
     duration: "8h 15m",
-    price: 25,
+    price: 2000,
     rating: 4.6,
     seatsAvailable: 18,
     cabinClasses: {
-      economy: { price: 25, name: "Standard Recliner" },
-      business: { price: 45, name: "Panorama Sleeper Deck" }
+      economy: { price: 2000, name: "Standard Recliner" },
+      business: { price: 3600, name: "Panorama Sleeper Deck" }
     }
   },
   {
@@ -240,12 +240,12 @@ export const mockBuses = [
     departureTime: "09:30 PM",
     arrivalTime: "06:45 AM (+1 day)",
     duration: "9h 15m",
-    price: 18,
+    price: 1250,
     rating: 4.6,
     seatsAvailable: 18,
     cabinClasses: {
-      economy: { price: 18, name: "Luxury Seater" },
-      business: { price: 28, name: "Premium Sleeper Berth" }
+      economy: { price: 1250, name: "Luxury Seater" },
+      business: { price: 1750, name: "Premium Sleeper Berth" }
     }
   },
   {
@@ -258,12 +258,12 @@ export const mockBuses = [
     departureTime: "07:00 PM",
     arrivalTime: "11:30 PM",
     duration: "4h 30m",
-    price: 30,
+    price: 2400,
     rating: 4.3,
     seatsAvailable: 12,
     cabinClasses: {
-      economy: { price: 30, name: "Standard Seater" },
-      business: { price: 50, name: "Extra Legroom Premium" }
+      economy: { price: 2400, name: "Standard Seater" },
+      business: { price: 4000, name: "Extra Legroom Premium" }
     }
   },
   {
@@ -276,12 +276,12 @@ export const mockBuses = [
     departureTime: "04:30 PM",
     arrivalTime: "08:30 AM (+1 day)",
     duration: "16h 00m",
-    price: 35,
+    price: 2400,
     rating: 4.7,
     seatsAvailable: 7,
     cabinClasses: {
-      economy: { price: 35, name: "Single Sleeper" },
-      business: { price: 50, name: "Double Spacious Sleeper" }
+      economy: { price: 2400, name: "Single Sleeper" },
+      business: { price: 3600, name: "Double Spacious Sleeper" }
     }
   }
 ];
@@ -293,14 +293,14 @@ export const mockHotels = [
     location: "Place Vendôme, Paris",
     rating: 4.9,
     reviews: 844,
-    price: 350,
+    price: 28000,
     image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80",
     amenities: ["WiFi", "Indoor Pool", "Spa", "Private Gardens", "Fitness Center", "Michelin Dining", "Butler Service"],
     description: "Nestled in the heart of Paris, this historic palace offers world-class French dining, private garden terraces, and majestic neo-classical suites.",
     rooms: [
-      { id: "h1-r1", name: "Superior Room - Queen Bed", price: 350, maxOccupancy: 2 },
-      { id: "h1-r2", name: "Deluxe Suite - King Bed", price: 550, maxOccupancy: 3 },
-      { id: "h1-r3", name: "Imperial Palace Suite with Balcony", price: 1200, maxOccupancy: 4 }
+      { id: "h1-r1", name: "Superior Room - Queen Bed", price: 28000, maxOccupancy: 2 },
+      { id: "h1-r2", name: "Deluxe Suite - King Bed", price: 45000, maxOccupancy: 3 },
+      { id: "h1-r3", name: "Imperial Palace Suite with Balcony", price: 95000, maxOccupancy: 4 }
     ]
   },
   {
@@ -309,14 +309,14 @@ export const mockHotels = [
     location: "Benaulim, Goa",
     rating: 4.9,
     reviews: 844,
-    price: 180,
+    price: 15500,
     image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
     amenities: ["WiFi", "Pool", "Spa", "Beachfront", "Fitness Center", "Fine Dining", "Golf Course"],
     description: "Spread across 56 acres of lush gardens, this Mediterranean-style resort offers private villas, sea-facing pools, and direct beachfront lounges in Goa.",
     rooms: [
-      { id: "h2-r1", name: "Garden Villa - Twin Bed", price: 180, maxOccupancy: 2 },
-      { id: "h2-r2", name: "Premium Sea View - King Bed", price: 240, maxOccupancy: 3 },
-      { id: "h2-r3", name: "Presidential Luxury Suite with Plunge Pool", price: 450, maxOccupancy: 4 }
+      { id: "h2-r1", name: "Garden Villa - Twin Bed", price: 15500, maxOccupancy: 2 },
+      { id: "h2-r2", name: "Premium Sea View - King Bed", price: 19800, maxOccupancy: 3 },
+      { id: "h2-r3", name: "Presidential Luxury Suite with Plunge Pool", price: 38000, maxOccupancy: 4 }
     ]
   },
   {
@@ -325,14 +325,14 @@ export const mockHotels = [
     location: "Jumeirah Beach, Dubai",
     rating: 4.9,
     reviews: 2450,
-    price: 850,
+    price: 68000,
     image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80",
     amenities: ["WiFi", "Infinity Pool", "Private Beach", "24/7 Butler Service", "Underwater Restaurant", "Helipad Access"],
     description: "An iconic sail-shaped luxury hotel standing on an artificial island. Featuring double-floor suites, private gold plated fixtures, and signature helicopter transfers.",
     rooms: [
-      { id: "h3-r1", name: "Deluxe Marina One-Bedroom Suite", price: 850, maxOccupancy: 2 },
-      { id: "h3-r2", name: "Sky Marina Two-Bedroom Suite", price: 1450, maxOccupancy: 4 },
-      { id: "h3-r3", name: "Grand Royal Presidential Suite", price: 3800, maxOccupancy: 5 }
+      { id: "h3-r1", name: "Deluxe Marina One-Bedroom Suite", price: 68000, maxOccupancy: 2 },
+      { id: "h3-r2", name: "Sky Marina Two-Bedroom Suite", price: 115000, maxOccupancy: 4 },
+      { id: "h3-r3", name: "Grand Royal Presidential Suite", price: 280000, maxOccupancy: 5 }
     ]
   },
   {
@@ -341,14 +341,14 @@ export const mockHotels = [
     location: "Colaba, Mumbai",
     rating: 4.9,
     reviews: 2450,
-    price: 220,
+    price: 18000,
     image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80",
     amenities: ["WiFi", "Pool", "Gym", "24/7 Butler Service", "Free Breakfast", "Gateway View"],
     description: "An iconic landmark facing the Arabian Sea and Gateway of India. Featuring historic architecture, legendary hospitality, and signature fine dining in Mumbai.",
     rooms: [
-      { id: "h4-r1", name: "Tower Wing Deluxe City View", price: 220, maxOccupancy: 2 },
-      { id: "h4-r2", name: "Palace Wing Luxury Sea View", price: 320, maxOccupancy: 3 },
-      { id: "h4-r3", name: "Grand Luxury Theme Suite", price: 750, maxOccupancy: 4 }
+      { id: "h4-r1", name: "Tower Wing Deluxe City View", price: 18000, maxOccupancy: 2 },
+      { id: "h4-r2", name: "Palace Wing Luxury Sea View", price: 27000, maxOccupancy: 3 },
+      { id: "h4-r3", name: "Grand Luxury Theme Suite", price: 65000, maxOccupancy: 4 }
     ]
   },
   {
@@ -357,14 +357,14 @@ export const mockHotels = [
     location: "Bayfront Avenue, Singapore",
     rating: 4.8,
     reviews: 980,
-    price: 450,
+    price: 35000,
     image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
     amenities: ["WiFi", "SkyPark Infinity Pool", "Rooftop Club", "Casino", "Banyan Tree Spa", "VIP Lounge"],
     description: "Three soaring towers connected by the breathtaking Sands SkyPark. Swim in the world's largest rooftop infinity pool with panoramic skyline views.",
     rooms: [
-      { id: "h5-r1", name: "Sands Deluxe City View Room", price: 450, maxOccupancy: 2 },
-      { id: "h5-r2", name: "Sands Premier King Room", price: 650, maxOccupancy: 3 },
-      { id: "h5-r3", name: "Straits Luxury Suite with Sky Lounge", price: 1400, maxOccupancy: 4 }
+      { id: "h5-r1", name: "Sands Deluxe City View Room", price: 35000, maxOccupancy: 2 },
+      { id: "h5-r2", name: "Sands Premier King Room", price: 50000, maxOccupancy: 3 },
+      { id: "h5-r3", name: "Straits Luxury Suite with Sky Lounge", price: 110000, maxOccupancy: 4 }
     ]
   },
   {
@@ -373,14 +373,14 @@ export const mockHotels = [
     location: "Bhawani Singh Road, Jaipur",
     rating: 4.9,
     reviews: 732,
-    price: 250,
+    price: 22000,
     image: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=800&q=80",
     amenities: ["WiFi", "Royal Gardens", "Indoor Pool", "Peacock Viewing", "Polo Lounge"],
     description: "The former residence of the Maharaja of Jaipur. Live like royalty in India amidst marble corridors, detailed frescoes, and expansive Mughal lawns.",
     rooms: [
-      { id: "h6-r1", name: "Palace Queen Chamber", price: 250, maxOccupancy: 2 },
-      { id: "h6-r2", name: "Historical Suite - King Bed", price: 380, maxOccupancy: 3 },
-      { id: "h6-r3", name: "Grand Maharaja Theme Suite", price: 850, maxOccupancy: 4 }
+      { id: "h6-r1", name: "Palace Queen Chamber", price: 22000, maxOccupancy: 2 },
+      { id: "h6-r2", name: "Historical Suite - King Bed", price: 35000, maxOccupancy: 3 },
+      { id: "h6-r3", name: "Grand Maharaja Theme Suite", price: 82000, maxOccupancy: 4 }
     ]
   }
 ];
@@ -393,7 +393,7 @@ export const mockPackages = [
     hotelId: "h1",
     durationDays: 6,
     rating: 4.9,
-    price: 1450,
+    price: 115000,
     image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
     description: "The ultimate European getaway. Includes round-trip flights to Paris, luxury suite lodging at The Ritz-Carlton, and a private Seine dinner cruise.",
     inclusions: ["Roundtrip Airfare (Emirates)", "5 Nights Deluxe Suite Accommodation", "Daily Gourmet Buffet Breakfast", "Private Airport Limousine Transfers", "Seine Sunset Dinner Cruise with Champagne"]
@@ -405,7 +405,7 @@ export const mockPackages = [
     hotelId: "h2",
     durationDays: 5,
     rating: 4.9,
-    price: 420,
+    price: 34500,
     image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
     description: "The ultimate Indian coastal getaway. Includes round-trip flights from New Delhi, beach villa lodging at Taj Exotica Goa, and a private sunset yacht cruise.",
     inclusions: ["Roundtrip Airfare (IndiGo)", "4 Nights Garden Villa Accommodation", "Daily Buffet Breakfast & Dinner", "Private Airport Cab Transfers", "Sunset Yacht Cruise with Drinks"]
@@ -417,7 +417,7 @@ export const mockPackages = [
     hotelId: "h5",
     durationDays: 7,
     rating: 4.9,
-    price: 1890,
+    price: 145000,
     image: "https://images.unsplash.com/photo-1482862549707-f63cb32c5fd9?auto=format&fit=crop&w=800&q=80",
     description: "Explore traditional Japan. Includes flights, luxury suites at Aman Tokyo, Shinkansen bullet train passes to Kyoto, and guided temple tours.",
     inclusions: ["Roundtrip Airfare (Singapore Airlines)", "6 Nights Luxury Skyline Suite", "7-Day Unlimited Shinkansen Passes", "Private Tour Guide in Kyoto & Nara", "Zen Spa Onsen Packages"]
@@ -425,11 +425,11 @@ export const mockPackages = [
   {
     id: "p4",
     name: "Kashmir Valley Snow Paradise",
-    flightId: "f6", // Fallback flight code Air India
-    hotelId: "h6", // Taj/Rambagh - we can adapt
+    flightId: "f6",
+    hotelId: "h6",
     durationDays: 6,
     rating: 4.8,
-    price: 480,
+    price: 39900,
     image: "https://images.unsplash.com/photo-1482862549707-f63cb32c5fd9?auto=format&fit=crop&w=800&q=80",
     description: "Explore the snowy valleys of Kashmir. Includes flights, luxury hotel rooms, Gondola cable car passes, and ski rentals.",
     inclusions: ["Roundtrip Airfare (Air India)", "5 Nights Premium Room Stay", "Gondola Phase-1 Cable Car Passes", "Full Day Srinagar Boat Tour", "Ski Gear & Instructor Assistance"]
@@ -442,7 +442,7 @@ export const mockTestimonials = [
     name: "Alex Mercer",
     role: "Travel Vlogger",
     avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80",
-    comment: "Sanchari Travels saved me over $1,500 on my Paris vacation package! The seat selection map was extremely simple and responsive.",
+    comment: "Sanchari Travels saved me over ₹15,000 on my Paris vacation package! The seat selection map was extremely simple and responsive.",
     rating: 5
   },
   {

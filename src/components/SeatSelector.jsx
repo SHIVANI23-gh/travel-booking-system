@@ -119,15 +119,15 @@ export default function SeatSelector({ type, selectedItem, searchParams, onConfi
           <div className="seat-legend">
             <div className="legend-item">
               <div className="legend-color" style={{ background: 'var(--accent)' }}></div>
-              <span>First Class (+$1,500)</span>
+              <span>First Class (+₹1,500)</span>
             </div>
             <div className="legend-item">
               <div className="legend-color" style={{ background: 'var(--primary)' }}></div>
-              <span>Business Class (+$750)</span>
+              <span>Business Class (+₹750)</span>
             </div>
             <div className="legend-item">
               <div className="legend-color" style={{ background: 'var(--bg-tertiary)', border: '1px solid var(--glass-border)' }}></div>
-              <span>Economy (+$0)</span>
+              <span>Economy (+₹0)</span>
             </div>
             <div className="legend-item">
               <div className="legend-color" style={{ background: 'rgba(255,255,255,0.05)' }}></div>
@@ -172,7 +172,7 @@ export default function SeatSelector({ type, selectedItem, searchParams, onConfi
             <div style={{ textAlign: 'right' }}>
               <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>Seat Upgrade Charges:</div>
               <div style={{ fontSize: '1.4rem', fontWeight: 700, color: 'var(--secondary)', marginBottom: '8px' }}>
-                +${getSeatClassPrice().toLocaleString()}
+                +₹{getSeatClassPrice().toLocaleString()}
               </div>
               <button type="button" className="action-btn" onClick={handleConfirmFlightSeats}>
                 Confirm & Continue
@@ -221,7 +221,7 @@ export default function SeatSelector({ type, selectedItem, searchParams, onConfi
                   </div>
                   <div style={{ textAlign: 'right', display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '8px' }}>
                     <div>
-                      <span style={{ fontSize: '1.5rem', fontWeight: 800 }}>${room.price.toLocaleString()}</span>
+                      <span style={{ fontSize: '1.5rem', fontWeight: 800 }}>₹{room.price.toLocaleString()}</span>
                       <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>/night</span>
                     </div>
                     {isSelected ? (

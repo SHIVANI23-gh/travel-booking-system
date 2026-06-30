@@ -328,36 +328,36 @@ export default function CheckoutForm({ type, selectedItem, searchParams, customi
             <div className="order-summary-list">
               <div className="summary-item">
                 <span>Base Fare</span>
-                <span>${(isHotel ? (customizations?.selectedRoom?.price || selectedItem.price) : (selectedItem.cabinClasses?.[searchParams?.cabinClass || 'economy']?.price || selectedItem.price)).toLocaleString()} {isHotel ? '/ night' : `x ${travelers}`}</span>
+                <span>₹{(isHotel ? (customizations?.selectedRoom?.price || selectedItem.price) : (selectedItem.cabinClasses?.[searchParams?.cabinClass || 'economy']?.price || selectedItem.price)).toLocaleString()} {isHotel ? '/ night' : `x ${travelers}`}</span>
               </div>
               
               {!isHotel && !isPackage && (customizations?.seatUpgradeCost > 0) && (
                 <div className="summary-item">
                   <span>Seat Upgrades</span>
-                  <span>+${customizations.seatUpgradeCost.toLocaleString()}</span>
+                  <span>+₹{customizations.seatUpgradeCost.toLocaleString()}</span>
                 </div>
               )}
 
               <div className="summary-item">
                 <span>Subtotal</span>
-                <span>${subtotal.toLocaleString()}</span>
+                <span>₹{subtotal.toLocaleString()}</span>
               </div>
 
               <div className="summary-item">
                 <span>Taxes & Fees (8%)</span>
-                <span>+${taxes.toLocaleString()}</span>
+                <span>+₹{taxes.toLocaleString()}</span>
               </div>
 
               {appliedDiscount > 0 && (
                 <div className="summary-item" style={{ color: 'var(--secondary)' }}>
                   <span>Discount ({appliedDiscount}%)</span>
-                  <span>-${discountAmount.toLocaleString()}</span>
+                  <span>-₹{discountAmount.toLocaleString()}</span>
                 </div>
               )}
 
               <div className="summary-item total">
                 <span>Total Amount</span>
-                <span>${total.toLocaleString()}</span>
+                <span>₹{total.toLocaleString()}</span>
               </div>
             </div>
 
@@ -396,7 +396,7 @@ export default function CheckoutForm({ type, selectedItem, searchParams, customi
 
             <button type="submit" className="action-btn" style={{ width: '100%' }}>
               <ShieldCheck size={18} />
-              Confirm & Book (${total.toLocaleString()})
+              Confirm & Book (₹{total.toLocaleString()})
             </button>
             
             <button 
