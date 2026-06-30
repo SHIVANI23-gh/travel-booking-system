@@ -1,7 +1,7 @@
 import React from 'react';
-import { Compass, Briefcase, Heart, User } from 'lucide-react';
+import { Compass, Briefcase, Heart, User, LogOut } from 'lucide-react';
 
-export default function Navbar({ currentView, setView, bookingsCount, favoritesCount = 0 }) {
+export default function Navbar({ currentView, setView, bookingsCount, favoritesCount = 0, onLogout }) {
   return (
     <nav className="navbar">
       <div className="container navbar-container">
@@ -53,8 +53,28 @@ export default function Navbar({ currentView, setView, bookingsCount, favoritesC
               <span>Profile</span>
             </button>
           </li>
+          {onLogout && (
+            <li>
+              <button 
+                className="nav-link nav-logout-btn"
+                onClick={onLogout}
+                style={{
+                  border: 'none',
+                  background: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  cursor: 'pointer'
+                }}
+              >
+                <LogOut size={18} style={{ color: 'var(--danger)' }} />
+                <span style={{ color: 'var(--danger)' }}>Logout</span>
+              </button>
+            </li>
+          )}
         </ul>
       </div>
     </nav>
   );
 }
+

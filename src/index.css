@@ -2116,3 +2116,51 @@ h1, h2, h3, h4, h5, h6 {
     padding: 2px 8px;
   }
 }
+
+/* Authentication Screen Styles */
+.auth-wrapper {
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes logoPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+.logo-pulse {
+  animation: logoPulse 2.5s infinite ease-in-out;
+}
+
+.auth-card {
+  transition: all 0.3s ease;
+  animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.auth-card input {
+  transition: all 0.2s ease-in-out;
+}
+
+.auth-card input:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px rgba(255, 94, 132, 0.15);
+  background: var(--bg-primary) !important;
+}
+
+.auth-card img {
+  transition: all 0.2s ease;
+}
+
+.auth-card img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(255, 94, 132, 0.15);
+}
+
+.nav-logout-btn:hover {
+  background: rgba(239, 68, 68, 0.08) !important;
+}

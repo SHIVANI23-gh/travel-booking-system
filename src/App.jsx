@@ -10,6 +10,7 @@ import Dashboard from './components/Dashboard';
 import Chatbot from './components/Chatbot';
 import Wishlist from './components/Wishlist';
 import Profile from './components/Profile';
+import Auth from './components/Auth';
 import { Star, ShieldCheck, MapPin, Compass, Heart } from 'lucide-react';
 
 import { 
@@ -43,12 +44,26 @@ export default function App() {
   // Favorites/Wishlist state
   const [favorites, setFavorites] = useState([]);
 
+  const [isLoggedIn, setIsLoggedIn] = useState(() => {
+    return localStorage.getItem('sanchari_travels_is_logged_in') === 'true';
+  });
+
   // Personal profile state
-  const [profile, setProfile] = useState({
-    name: 'Shivani',
-    email: 'shivani@gmail.com',
-    phone: '+91 98765 43210',
-    avatar: 'https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?auto=format&fit=crop&w=150&q=80'
+  const [profile, setProfile] = useState(() => {
+    const savedProfile = localStorage.getItem('sanchari_travels_profile');
+    if (savedProfile) {
+      try {
+        return JSON.parse(savedProfile);
+      } catch (e) {
+        // Fallback
+      }
+    }
+    return {
+      name: '',
+      email: '',
+      phone: '',
+      avatar: ''
+    };
   });
 
   // Dynamic reviews state
@@ -67,41 +82,67 @@ export default function App() {
   
   const [sortBy, setSortBy] = useState('price-low'); // price-low, price-high, rating
 
-  // Load bookings from localStorage
+  // Load user data when logged in
   useEffect(() => {
-    const savedBookings = localStorage.getItem('sanchari_travels_bookings');
-    if (savedBookings) {
-      setBookings(JSON.parse(savedBookings));
-    }
+    if (isLoggedIn && profile?.email) {
+      // Load bookings scoped by email
+      const userBookingsKey = `sanchari_travels_bookings_${profile.email.toLowerCase()}`;
+      const savedBookings = localStorage.getItem(userBookingsKey);
+      setBookings(savedBookings ? JSON.parse(savedBookings) : []);
 
-    // Load favorites
-    const savedFavorites = localStorage.getItem('sanchari_travels_favorites');
-    if (savedFavorites) {
-      setFavorites(JSON.parse(savedFavorites));
+      // Load favorites scoped by email
+      const userFavoritesKey = `sanchari_travels_favorites_${profile.email.toLowerCase()}`;
+      const savedFavorites = localStorage.getItem(userFavoritesKey);
+      setFavorites(savedFavorites ? JSON.parse(savedFavorites) : []);
+    } else {
+      setBookings([]);
+      setFavorites([]);
     }
+  }, [isLoggedIn, profile?.email]);
 
-    // Load reviews
+  // Load reviews globally on mount
+  useEffect(() => {
     const savedReviews = localStorage.getItem('sanchari_travels_reviews');
     if (savedReviews) {
       setTestimonials(JSON.parse(savedReviews));
     }
-
-    // Load profile
-    const savedProfile = localStorage.getItem('sanchari_travels_profile');
-    if (savedProfile) {
-      setProfile(JSON.parse(savedProfile));
-    }
   }, []);
+
+  const handleAuthSuccess = (userData) => {
+    setProfile(userData);
+    setIsLoggedIn(true);
+    localStorage.setItem('sanchari_travels_is_logged_in', 'true');
+    localStorage.setItem('sanchari_travels_profile', JSON.stringify(userData));
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setProfile({
+      name: '',
+      email: '',
+      phone: '',
+      avatar: ''
+    });
+    localStorage.removeItem('sanchari_travels_is_logged_in');
+    localStorage.removeItem('sanchari_travels_profile');
+    setView('search'); // Reset view to search page
+  };
 
   // Save bookings to localStorage
   const saveBookings = (newBookings) => {
     setBookings(newBookings);
-    localStorage.setItem('sanchari_travels_bookings', JSON.stringify(newBookings));
+    if (profile?.email) {
+      const userBookingsKey = `sanchari_travels_bookings_${profile.email.toLowerCase()}`;
+      localStorage.setItem(userBookingsKey, JSON.stringify(newBookings));
+    }
   };
 
   const saveFavorites = (newFavorites) => {
     setFavorites(newFavorites);
-    localStorage.setItem('sanchari_travels_favorites', JSON.stringify(newFavorites));
+    if (profile?.email) {
+      const userFavoritesKey = `sanchari_travels_favorites_${profile.email.toLowerCase()}`;
+      localStorage.setItem(userFavoritesKey, JSON.stringify(newFavorites));
+    }
   };
 
   const handleToggleFavorite = (item, itemType) => {
@@ -456,6 +497,10 @@ export default function App() {
   const filteredListings = getFilteredListings();
   const activeBookingsCount = bookings.filter(b => b.status === 'confirmed').length;
 
+  if (!isLoggedIn) {
+    return <Auth onAuthSuccess={handleAuthSuccess} />;
+  }
+
   return (
     <div className="app-container">
       {/* Live Server Connecting Simulation Screen */}
@@ -487,6 +532,7 @@ export default function App() {
         setView={setView} 
         bookingsCount={activeBookingsCount} 
         favoritesCount={favorites.length}
+        onLogout={handleLogout}
       />
 
       {/* Main Content Area */}
