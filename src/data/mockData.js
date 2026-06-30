@@ -1,90 +1,90 @@
 export const mockFlights = [
   {
     id: "f1",
-    airline: "Air India",
-    logo: "airindia",
-    code: "AI-101",
-    departure: "DEL (New Delhi)",
-    arrival: "BOM (Mumbai)",
-    departureTime: "07:30 AM",
-    arrivalTime: "09:45 AM",
-    duration: "2h 15m",
+    airline: "British Airways",
+    logo: "britishairways",
+    code: "BA-227",
+    departure: "LHR (London Heathrow)",
+    arrival: "JFK (New York)",
+    departureTime: "08:30 AM",
+    arrivalTime: "11:45 AM",
+    duration: "8h 15m",
     stops: 0,
-    price: 4500,
+    price: 450,
     class: "Economy",
-    baggage: "1 Carry-on (7kg), 1 Checked (25kg)",
+    baggage: "1 Carry-on (10kg), 1 Checked (23kg)",
     rating: 4.6,
     seatsAvailable: 42,
     cabinClasses: {
-      economy: { price: 4500, name: "Economy Class" },
-      business: { price: 14500, name: "Business Class" },
-      first: { price: 28000, name: "First Class" }
+      economy: { price: 450, name: "Economy Class" },
+      business: { price: 1450, name: "Club World Business" },
+      first: { price: 2800, name: "First Class" }
     }
   },
   {
     id: "f2",
-    airline: "IndiGo",
-    logo: "indigo",
-    code: "6E-512",
-    departure: "DEL (New Delhi)",
-    arrival: "GOI (Goa)",
+    airline: "Emirates",
+    logo: "emirates",
+    code: "EK-412",
+    departure: "DXB (Dubai International)",
+    arrival: "CDG (Paris)",
     departureTime: "11:15 AM",
-    arrivalTime: "01:55 PM",
-    duration: "2h 40m",
+    arrivalTime: "04:25 PM",
+    duration: "7h 10m",
     stops: 0,
-    price: 5200,
+    price: 520,
     class: "Economy",
-    baggage: "1 Carry-on (7kg), 1 Checked (15kg)",
-    rating: 4.7,
+    baggage: "1 Carry-on (7kg), 1 Checked (20kg)",
+    rating: 4.8,
     seatsAvailable: 15,
     cabinClasses: {
-      economy: { price: 5200, name: "Economy Class" },
-      business: { price: 11000, name: "Business Class" },
-      first: { price: 18000, name: "First Class" }
+      economy: { price: 520, name: "Economy Class" },
+      business: { price: 1850, name: "Business Class" },
+      first: { price: 3400, name: "First Class Suite" }
     }
   },
   {
     id: "f3",
-    airline: "Vistara",
-    logo: "vistara",
-    code: "UK-810",
-    departure: "BOM (Mumbai)",
-    arrival: "BLR (Bengaluru)",
+    airline: "Singapore Airlines",
+    logo: "singapore",
+    code: "SQ-321",
+    departure: "SIN (Singapore Changi)",
+    arrival: "HND (Tokyo Haneda)",
     departureTime: "06:00 PM",
-    arrivalTime: "07:45 PM",
-    duration: "1h 45m",
+    arrivalTime: "01:45 AM (+1 day)",
+    duration: "6h 45m",
     stops: 0,
-    price: 3800,
+    price: 380,
     class: "Economy",
-    baggage: "1 Carry-on (7kg), 1 Checked (20kg)",
-    rating: 4.8,
+    baggage: "1 Carry-on (7kg), 1 Checked (25kg)",
+    rating: 4.9,
     seatsAvailable: 28,
     cabinClasses: {
       economy: { price: 380, name: "Economy Class" },
-      business: { price: 9500, name: "Business Class" },
-      first: { price: 16000, name: "First Class" }
+      business: { price: 1250, name: "Business Class" },
+      first: { price: 2500, name: "First Class Suite" }
     }
   },
   {
     id: "f4",
-    airline: "SpiceJet",
-    logo: "spicejet",
-    code: "SG-244",
-    departure: "DEL (New Delhi)",
-    arrival: "SXR (Srinagar)",
-    departureTime: "08:20 AM",
-    arrivalTime: "09:50 AM",
-    duration: "1h 30m",
+    airline: "Delta Air Lines",
+    logo: "delta",
+    code: "DL-895",
+    departure: "LAX (Los Angeles)",
+    arrival: "SYD (Sydney)",
+    departureTime: "10:20 PM",
+    arrivalTime: "06:50 AM (+2 days)",
+    duration: "14h 30m",
     stops: 0,
-    price: 4100,
+    price: 850,
     class: "Economy",
-    baggage: "1 Carry-on (7kg), 1 Checked (15kg)",
-    rating: 4.2,
+    baggage: "1 Carry-on (10kg), 2 Checked (23kg each)",
+    rating: 4.4,
     seatsAvailable: 31,
     cabinClasses: {
-      economy: { price: 4100, name: "Economy Class" },
-      business: { price: 8800, name: "Business Class" },
-      first: { price: 14500, name: "First Class" }
+      economy: { price: 850, name: "Main Cabin" },
+      business: { price: 2450, name: "Delta One Business" },
+      first: { price: 4200, name: "First Class" }
     }
   }
 ];
@@ -92,76 +92,77 @@ export const mockFlights = [
 export const mockTrains = [
   {
     id: "t1",
-    name: "Mumbai Rajdhani Express",
-    code: "12952",
-    departure: "DEL (New Delhi RS)",
-    arrival: "BOM (Mumbai Central)",
-    departureTime: "04:55 PM",
+    name: "Venice Simplon-Orient-Express",
+    code: "VSOE-1",
+    departure: "VCE (Venice Santa Lucia)",
+    arrival: "PAR (Paris Gare de l'Est)",
+    departureTime: "11:00 AM",
     arrivalTime: "08:35 AM (+1 day)",
-    duration: "15h 40m",
-    stops: 5,
-    price: 2450, // 3AC base fare
-    rating: 4.8,
-    seatsAvailable: 64,
+    duration: "21h 35m",
+    stops: 4,
+    price: 245,
+    rating: 4.9,
+    seatsAvailable: 12,
     cabinClasses: {
-      economy: { price: 2450, name: "AC 3 Tier (3A)" },
-      business: { price: 3850, name: "AC 2 Tier (2A)" },
-      first: { price: 4750, name: "AC First Class (1A)" }
+      economy: { price: 245, name: "Historic Cabin Berth" },
+      business: { price: 385, name: "Suite Twin Compartment" },
+      first: { price: 650, name: "Grand Suite Palace" }
     }
   },
   {
     id: "t2",
-    name: "Kolkata Duronto Express",
-    code: "12260",
-    departure: "DEL (New Delhi RS)",
-    arrival: "CCU (Howrah Junction)",
+    name: "Shinkansen Bullet Train (Nozomi)",
+    code: "SHIN-71",
+    departure: "TYO (Tokyo Station)",
+    arrival: "OSA (Shin-Osaka)",
     departureTime: "04:10 PM",
-    arrivalTime: "10:30 AM (+1 day)",
-    duration: "18h 20m",
+    arrivalTime: "06:40 PM",
+    duration: "2h 30m",
     stops: 3,
-    price: 2150,
-    rating: 4.6,
-    seatsAvailable: 22,
+    price: 110,
+    rating: 4.9,
+    seatsAvailable: 64,
     cabinClasses: {
-      economy: { price: 2150, name: "AC 3 Tier (3A)" },
-      business: { price: 3100, name: "AC 2 Tier (2A)" },
-      first: { price: 4300, name: "AC First Class (1A)" }
+      economy: { price: 110, name: "Ordinary Reserved Seat" },
+      business: { price: 165, name: "Green Car Premium" },
+      first: { price: 280, name: "Gran Class Luxury Suite" }
     }
   },
   {
     id: "t3",
-    name: "Jaipur Double Decker",
-    code: "12986",
-    departure: "DEL (Sarai Rohilla)",
-    arrival: "JAI (Jaipur Junction)",
+    name: "Eurostar High-Speed Link",
+    code: "EST-9040",
+    departure: "STP (London St Pancras)",
+    arrival: "GDN (Paris Gare du Nord)",
     departureTime: "05:35 PM",
-    arrivalTime: "10:05 PM",
-    duration: "4h 30m",
-    stops: 4,
-    price: 650, // AC Chair Car
-    rating: 4.4,
+    arrivalTime: "08:50 PM",
+    duration: "2h 15m",
+    stops: 1,
+    price: 85,
+    rating: 4.7,
     seatsAvailable: 110,
     cabinClasses: {
-      economy: { price: 650, name: "AC Chair Car (CC)" },
-      business: { price: 1250, name: "Executive Chair Car (EC)" }
+      economy: { price: 85, name: "Standard Class" },
+      business: { price: 145, name: "Standard Premier" },
+      first: { price: 220, name: "Business Premier Luxury" }
     }
   },
   {
     id: "t4",
-    name: "Goa Madgaon Tejas Express",
-    code: "22119",
-    departure: "BOM (Chhatrapati Shivaji T)",
-    arrival: "GOI (Madgaon Junction)",
-    departureTime: "05:50 AM",
-    arrivalTime: "02:40 PM",
-    duration: "8h 50m",
-    stops: 7,
-    price: 1850,
-    rating: 4.7,
+    name: "Amtrak Acela Express",
+    code: "ACELA-21",
+    departure: "NYP (New York Penn Station)",
+    arrival: "WAS (Washington Union)",
+    departureTime: "06:00 AM",
+    arrivalTime: "08:55 AM",
+    duration: "2h 55m",
+    stops: 5,
+    price: 65,
+    rating: 4.5,
     seatsAvailable: 35,
     cabinClasses: {
-      economy: { price: 1850, name: "AC Chair Car (CC)" },
-      business: { price: 3200, name: "Executive Chair Car (EC)" }
+      economy: { price: 65, name: "Business Class Standard" },
+      business: { price: 120, name: "First Class Premium Lounge" }
     }
   }
 ];
@@ -169,74 +170,74 @@ export const mockTrains = [
 export const mockBuses = [
   {
     id: "b1",
-    operator: "KSRTC Swift (State Transport)",
-    type: "Airavat Club Class Multiaxle AC",
-    code: "KS-BLR-COK-01",
-    departure: "BLR (Kempegowda BS, Majestic)",
-    arrival: "COK (Kochi Bus Stand)",
+    operator: "FlixBus Premium (Europe)",
+    type: "Double-Decker Mercedes Coach AC",
+    code: "FB-PAR-AMS-01",
+    departure: "PAR (Paris Bercy Seine)",
+    arrival: "AMS (Amsterdam Sloterdijk)",
     departureTime: "09:30 PM",
-    arrivalTime: "06:45 AM (+1 day)",
-    duration: "9h 15m",
-    price: 1250,
+    arrivalTime: "05:45 AM (+1 day)",
+    duration: "8h 15m",
+    price: 25,
     rating: 4.6,
     seatsAvailable: 18,
     cabinClasses: {
-      economy: { price: 1250, name: "Luxury Seater" },
-      business: { price: 1750, name: "Premium Sleeper Berth" }
+      economy: { price: 25, name: "Standard Recliner" },
+      business: { price: 45, name: "Panorama Sleeper Deck" }
     }
   },
   {
     id: "b2",
-    operator: "MSRTC Shivneri (State Transport)",
-    type: "Scania AC Multi-Axle",
-    code: "MS-BOM-GOI-08",
-    departure: "BOM (Mumbai Central BS)",
-    arrival: "GOI (Panaji Bus Stand)",
+    operator: "Greyhound Express (USA)",
+    type: "Prevost X3-45 Luxury Cruiser",
+    code: "GH-NYC-BOS-08",
+    departure: "NYC (Port Authority, NY)",
+    arrival: "BOS (South Station, Boston)",
     departureTime: "07:00 PM",
-    arrivalTime: "07:30 AM (+1 day)",
-    duration: "12h 30m",
-    price: 1500,
-    rating: 4.5,
+    arrivalTime: "11:30 PM",
+    duration: "4h 30m",
+    price: 30,
+    rating: 4.3,
     seatsAvailable: 12,
     cabinClasses: {
-      economy: { price: 1500, name: "Luxury Seater" },
-      business: { price: 2100, name: "Premium Sleeper Berth" }
+      economy: { price: 30, name: "Standard Seater" },
+      business: { price: 50, name: "Extra Legroom Premium" }
     }
   },
   {
     id: "b3",
-    operator: "Orange Travels (Private Sleeper)",
-    type: "Volvo Multi-Axle AC Sleeper (2+1)",
-    code: "OT-BOM-BLR-44",
-    departure: "BOM (Borivali East)",
-    arrival: "BLR (Anand Rao Circle)",
-    departureTime: "04:30 PM",
-    arrivalTime: "08:30 AM (+1 day)",
-    duration: "16h 00m",
-    price: 2400,
+    operator: "National Express (UK)",
+    type: "Volvo B11R Elite Sleeper",
+    code: "NE-LON-EDI-44",
+    departure: "LON (Victoria Coach Station)",
+    arrival: "EDI (Edinburgh Bus Station)",
+    departureTime: "10:30 PM",
+    arrivalTime: "07:30 AM (+1 day)",
+    duration: "9h 00m",
+    price: 45,
     rating: 4.7,
     seatsAvailable: 7,
     cabinClasses: {
-      economy: { price: 2400, name: "Single Sleeper" },
-      business: { price: 3600, name: "Double Spacious Sleeper" }
+      economy: { price: 45, name: "Single Sleeper Capsule" },
+      business: { price: 75, name: "Spacious Double Suite Deck" }
     }
   },
   {
     id: "b4",
-    operator: "Zingbus (Smart Express)",
-    type: "Volvo Eicher Premium AC Seater/Sleeper",
-    code: "ZB-DEL-JAI-12",
-    departure: "DEL (Kashmere Gate ISBT)",
-    arrival: "JAI (Sindhi Camp Bus Stand)",
+    operator: "ALSA Premium (Spain)",
+    type: "Setra ComfortClass SuperCoach",
+    code: "AL-MAD-BAR-12",
+    departure: "MAD (Madrid Estacion Sur)",
+    arrival: "BAR (Barcelona Sants)",
     departureTime: "11:30 PM",
-    arrivalTime: "05:15 AM (+1 day)",
-    duration: "5h 45m",
-    price: 580,
-    rating: 4.3,
+    arrivalTime: "06:15 AM (+1 day)",
+    duration: "6h 45m",
+    price: 35,
+    rating: 4.5,
     seatsAvailable: 24,
     cabinClasses: {
-      economy: { price: 580, name: "AC Seater" },
-      business: { price: 950, name: "Premium Sleeper" }
+      economy: { price: 35, name: "Comfort Seater" },
+      business: { price: 60, name: "VIP Sleeper Cabin" }
     }
   }
 ];
@@ -244,82 +245,82 @@ export const mockBuses = [
 export const mockHotels = [
   {
     id: "h1",
-    name: "Taj Exotica Resort & Spa",
-    location: "Benaulim, Goa",
+    name: "The Ritz-Carlton Paris",
+    location: "Place Vendôme, Paris",
     rating: 4.9,
     reviews: 844,
-    price: 15500,
+    price: 350,
     image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80",
-    amenities: ["WiFi", "Pool", "Spa", "Beachfront", "Fitness Center", "Fine Dining", "Golf Course"],
-    description: "Spread across 56 acres of lush gardens, this Mediterranean-style resort offers private villas, sea-facing pools, and direct beachfront lounges.",
+    amenities: ["WiFi", "Indoor Pool", "Spa", "Private Gardens", "Fitness Center", "Michelin Dining", "Butler Service"],
+    description: "Nestled in the heart of Paris, this historic palace offers world-class French dining, private garden terraces, and majestic neo-classical suites.",
     rooms: [
-      { id: "h1-r1", name: "Garden Villa - Twin Bed", price: 15500, maxOccupancy: 2 },
-      { id: "h1-r2", name: "Premium Sea View - King Bed", price: 19800, maxOccupancy: 3 },
-      { id: "h1-r3", name: "Presidential Luxury Suite with Plunge Pool", price: 38000, maxOccupancy: 4 }
+      { id: "h1-r1", name: "Superior Room - Queen Bed", price: 350, maxOccupancy: 2 },
+      { id: "h1-r2", name: "Deluxe Suite - King Bed", price: 550, maxOccupancy: 3 },
+      { id: "h1-r3", name: "Imperial Palace Suite with Balcony", price: 1200, maxOccupancy: 4 }
     ]
   },
   {
     id: "h2",
-    name: "Taj Mahal Palace Hotel",
-    location: "Colaba, Mumbai",
+    name: "Burj Al Arab Jumeirah",
+    location: "Jumeirah Beach, Dubai",
     rating: 4.9,
     reviews: 2450,
-    price: 18000,
+    price: 850,
     image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80",
-    amenities: ["WiFi", "Pool", "Gym", "24/7 Butler Service", "Free Breakfast", "Gateway View"],
-    description: "An iconic landmark facing the Arabian Sea and Gateway of India. Featuring historic architecture, legendary hospitality, and signature fine dining.",
+    amenities: ["WiFi", "Infinity Pool", "Private Beach", "24/7 Butler Service", "Underwater Restaurant", "Helipad Access"],
+    description: "An iconic sail-shaped luxury hotel standing on an artificial island. Featuring double-floor suites, private gold plated fixtures, and signature helicopter transfers.",
     rooms: [
-      { id: "h2-r1", name: "Tower Wing Deluxe City View", price: 18000, maxOccupancy: 2 },
-      { id: "h2-r2", name: "Palace Wing Luxury Sea View", price: 27000, maxOccupancy: 3 },
-      { id: "h2-r3", name: "Grand Luxury Theme Suite", price: 65000, maxOccupancy: 4 }
+      { id: "h2-r1", name: "Deluxe Marina One-Bedroom Suite", price: 850, maxOccupancy: 2 },
+      { id: "h2-r2", name: "Sky Marina Two-Bedroom Suite", price: 1450, maxOccupancy: 4 },
+      { id: "h2-r3", name: "Grand Royal Presidential Suite", price: 3800, maxOccupancy: 5 }
     ]
   },
   {
     id: "h3",
-    name: "The Leela Palace Hotel",
-    location: "Indiranagar, Bengaluru",
+    name: "Marina Bay Sands Singapore",
+    location: "Bayfront Avenue, Singapore",
     rating: 4.8,
     reviews: 980,
-    price: 12000,
+    price: 450,
     image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
-    amenities: ["WiFi", "Bar", "Gym", "Spa", "Lush Royal Gardens", "Valet"],
-    description: "Drawing architectural inspiration from the Royal Palace of Mysore, this garden estate stands out as a sanctuary of opulence in the Silicon Valley.",
+    amenities: ["WiFi", "SkyPark Infinity Pool", "Rooftop Club", "Casino", "Banyan Tree Spa", "VIP Lounge"],
+    description: "Three soaring towers connected by the breathtaking Sands SkyPark. Swim in the world's largest rooftop infinity pool with panoramic skyline views.",
     rooms: [
-      { id: "h3-r1", name: "Deluxe Garden View Room", price: 12000, maxOccupancy: 2 },
-      { id: "h3-r2", name: "Executive Suite", price: 18000, maxOccupancy: 2 },
-      { id: "h3-r3", name: "Royal Club Suite with Lounge Access", price: 29000, maxOccupancy: 4 }
+      { id: "h3-r1", name: "Sands Deluxe City View Room", price: 450, maxOccupancy: 2 },
+      { id: "h3-r2", name: "Sands Premier King Room", price: 650, maxOccupancy: 3 },
+      { id: "h3-r3", name: "Straits Luxury Suite with Sky Lounge", price: 1400, maxOccupancy: 4 }
     ]
   },
   {
     id: "h4",
-    name: "Rambagh Palace Hotel",
-    location: "Bhawani Singh Road, Jaipur",
+    name: "The Plaza Hotel New York",
+    location: "Fifth Avenue, New York City",
     rating: 4.9,
     reviews: 732,
-    price: 22000,
+    price: 550,
     image: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=800&q=80",
-    amenities: ["WiFi", "Royal Gardens", "Indoor Pool", "Peacock Viewing", "Polo Lounge"],
-    description: "The former residence of the Maharaja of Jaipur. Live like royalty amidst marble corridors, detailed frescoes, and expansive Mughal lawns.",
+    amenities: ["WiFi", "Champagne Bar", "Guerlain Spa", "Eloise Suite Access", "White Glove Service"],
+    description: "The ultimate Manhattan landmark overlooking Central Park. Experience storied luxury, detailed crystal chandeliers, and prestigious French-style chambers.",
     rooms: [
-      { id: "h4-r1", name: "Palace Queen Chamber", price: 22000, maxOccupancy: 2 },
-      { id: "h4-r2", name: "Historical Suite - King Bed", price: 35000, maxOccupancy: 3 },
-      { id: "h4-r3", name: "Grand Maharaja Theme Suite", price: 82000, maxOccupancy: 4 }
+      { id: "h4-r1", name: "Plaza Deluxe Queen Chamber", price: 550, maxOccupancy: 2 },
+      { id: "h4-r2", name: "Edwardian Suite - King Bed", price: 950, maxOccupancy: 3 },
+      { id: "h4-r3", name: "Grand Royal Plaza Penthouse Suite", price: 2600, maxOccupancy: 4 }
     ]
   },
   {
     id: "h5",
-    name: "Khyber Himalayan Resort",
-    location: "Gulmarg, Srinagar (Kashmir)",
-    rating: 4.8,
+    name: "Aman Tokyo Resort",
+    location: "Chiyoda-ku, Tokyo (Japan)",
+    rating: 4.9,
     reviews: 580,
-    price: 14500,
+    price: 650,
     image: "https://images.unsplash.com/photo-1502784444187-359ac186c5bb?auto=format&fit=crop&w=800&q=80",
-    amenities: ["WiFi", "Ski-in/Ski-out", "Heated Indoor Pool", "Gondola Access", "Spa", "Central Heating"],
-    description: "A cozy luxury retreat nestled among pine trees. Offering spectacular views of the snow-clad Affarwat peaks and steps from the famous Gulmarg Gondola.",
+    amenities: ["WiFi", "Bespoke Onsen Spa", "Fuji View Lounges", "Zen Rock Gardens", "Traditional Tea Rooms"],
+    description: "An urban sanctuary rising high above Tokyo's financial center. Seamlessly blending traditional Japanese Ryokan structures with modern high-rise luxury views.",
     rooms: [
-      { id: "h5-r1", name: "Premier Pine View Room", price: 14500, maxOccupancy: 2 },
-      { id: "h5-r2", name: "Luxury Affarwat View Room", price: 18500, maxOccupancy: 2 },
-      { id: "h5-r3", name: "Royal Duplex Cottage 2-BHK", price: 42000, maxOccupancy: 5 }
+      { id: "h5-r1", name: "Deluxe City View Room", price: 650, maxOccupancy: 2 },
+      { id: "h5-r2", name: "Premier Skyline View Suite", price: 950, maxOccupancy: 2 },
+      { id: "h5-r3", name: "Imperial Aman Residences 2-BHK", price: 2100, maxOccupancy: 5 }
     ]
   }
 ];
@@ -327,54 +328,54 @@ export const mockHotels = [
 export const mockPackages = [
   {
     id: "p1",
-    name: "Goa Beach Romantic Escape",
+    name: "Paris & French Riviera Escape",
     flightId: "f2",
     hotelId: "h1",
-    durationDays: 5,
+    durationDays: 6,
     rating: 4.9,
-    price: 34500,
+    price: 1450,
     image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
-    description: "The ultimate coastal getaway. Includes round-trip flights from New Delhi, beach villa lodging at Taj Exotica, and a private sunset luxury yacht cruise.",
-    inclusions: ["Roundtrip Airfare (IndiGo)", "4 Nights Garden Villa Accommodation", "Daily Buffet Breakfast & Dinner", "Private Airport Cab Transfers", "Sunset Yacht Cruise with Drinks"]
+    description: "The ultimate European getaway. Includes round-trip flights to Paris, luxury suite lodging at The Ritz-Carlton, and a private Seine dinner cruise.",
+    inclusions: ["Roundtrip Airfare (Emirates)", "5 Nights Deluxe Suite Accommodation", "Daily Gourmet Buffet Breakfast", "Private Airport Limousine Transfers", "Seine Sunset Dinner Cruise with Champagne"]
   },
   {
     id: "p2",
-    name: "Kashmir Valley Snow Paradise",
-    flightId: "f4",
+    name: "Japan Imperial Heritage Tour",
+    flightId: "f3",
     hotelId: "h5",
-    durationDays: 6,
-    rating: 4.8,
-    price: 39900,
+    durationDays: 7,
+    rating: 4.9,
+    price: 1890,
     image: "https://images.unsplash.com/photo-1482862549707-f63cb32c5fd9?auto=format&fit=crop&w=800&q=80",
-    description: "Explore the heaven on earth. Includes flights, luxury pine suites at Khyber Gulmarg, Gondola cable car passes, and ski rentals.",
-    inclusions: ["Roundtrip Airfare (SpiceJet)", "5 Nights Pine View Room", "Gondola Phase-1 Cable Car Passes", "Full Day Srinagar Shikara Boat Tour", "Ski Gear & Instructor Assistance"]
+    description: "Explore traditional Japan. Includes flights, luxury suites at Aman Tokyo, Shinkansen bullet train passes to Kyoto, and guided temple tours.",
+    inclusions: ["Roundtrip Airfare (Singapore Airlines)", "6 Nights Luxury Skyline Suite", "7-Day Unlimited Shinkansen Passes", "Private Tour Guide in Kyoto & Nara", "Zen Spa Onsen Packages"]
   },
   {
     id: "p3",
-    name: "Jaipur Maharaja Heritage Tour",
-    flightId: "f6",
+    name: "New York Luxury & Broadway Tour",
+    flightId: "f1",
     hotelId: "h4",
-    durationDays: 4,
-    rating: 4.9,
-    price: 42000,
+    durationDays: 5,
+    rating: 4.8,
+    price: 1650,
     image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80",
-    description: "Soak in royal Rajasthani heritage. Features imperial Rambagh Palace luxury chambers, historical fort excursions, and local bazaar culinary walks.",
-    inclusions: ["Roundtrip Airfare", "3 Nights Royal Chamber Stay", "Amer Fort Guided Jeep Tour", "Mahal Fine-Dining Dinner Experience", "Private chauffeur throughout Jaipur"]
+    description: "Experience Manhattan like royalty. Features historical stays at The Plaza Hotel, premium tickets to a Broadway show, and a private Central Park tour.",
+    inclusions: ["Roundtrip Airfare (British Airways)", "4 Nights Deluxe Plaza Stay", "VIP Front Row Broadway Tickets", "Private Central Park Horse Carriage Tour", "Luxury chauffeur service in Manhattan"]
   }
 ];
 
 export const mockTestimonials = [
   {
     id: 1,
-    name: "Aditya Sharma",
+    name: "Alex Mercer",
     role: "Travel Vlogger",
     avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80",
-    comment: "Sanchari Travels saved me over ₹15,000 on my Goa vacation package! The seat selection map was extremely simple and responsive.",
+    comment: "Sanchari Travels saved me over $1,500 on my Paris vacation package! The seat selection map was extremely simple and responsive.",
     rating: 5
   },
   {
     id: 2,
-    name: "Priyanjali Sen",
+    name: "Chloe Dupont",
     role: "Corporate Executive",
     avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80",
     comment: "The ticketing details are highly comprehensive. I had to change a spelling mistake in passenger details, and the dashboard edit was instant.",
@@ -382,10 +383,10 @@ export const mockTestimonials = [
   },
   {
     id: 3,
-    name: "Ramesh Nair",
+    name: "Kenji Sato",
     role: "Retired Professor",
     avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&q=80",
-    comment: "Booked the Kashmir Valley Tour. The system simulated connecting directly to airline databases to grab Vistara seat records perfectly.",
+    comment: "Booked the Japan Imperial Tour. The system simulated connecting directly to airline databases to grab Singapore Airlines seat records perfectly.",
     rating: 4
   }
 ];
@@ -397,15 +398,15 @@ export const faqList = [
   },
   {
     q: "Are the baggage fees included in the flight/train tickets?",
-    a: "Yes! Standard baggage information is displayed on every card. Flights include carry-on and checked luggage. Trains allow up to 40kg personal luggage in AC cabins without extra fees."
+    a: "Yes! Standard baggage information is displayed on every card. Flights include carry-on and checked luggage. Trains allow up to 2 checked bags in cabin storage without extra fees."
   },
   {
-    q: "Can I choose my specific berth preference in trains?",
-    a: "Yes, our interactive seat selector maps the layout of AC Sleeper coaches. You can choose Lower, Middle, Upper, or Side berths before payment."
+    q: "Can I choose my specific cabin/seat preference in trains?",
+    a: "Yes, our interactive seat selector maps the layout of the railway coaches. You can choose Upper/Lower berths or standard/aisle window seats before payment."
   },
   {
-    q: "Are the bus bookings connected with local bus stands?",
-    a: "Absolutely. Sanchari Travels works with local state undertakings (KSRTC, MSRTC, APSRTC) and premium private fleet operators. All ticket vouchers list specific boarding point details and bus stand gates."
+    q: "Are the bus bookings connected with local transport hubs?",
+    a: "Absolutely. Sanchari Travels works with premium global coach lines (FlixBus, Greyhound, National Express) and luxury private fleets. All ticket vouchers list specific terminal details and pickup gate locations."
   }
 ];
 
@@ -416,15 +417,15 @@ export const chatbotResponseTree = [
   },
   {
     triggers: ["baggage", "luggage", "carry-on", "checked"],
-    response: "Flights (Air India & IndiGo) allow 7kg carry-on and 15-25kg checked. Trains allow up to 40kg personal luggage inside compartments. Buses allow up to 2 large bags in the luggage hold."
+    response: "Flights (British Airways & Emirates) allow 7-10kg carry-on and 20-23kg checked. High-speed trains allow up to 2 luggage bags inside compartments. Buses allow up to 2 large bags in the luggage hold."
   },
   {
-    triggers: ["train", "railway", "irctc", "berth", "rajdhani"],
-    response: "We offer direct ticketing for IRCTC Indian Railways including Rajdhani, Shatabdi, and Tejas Express. You can select AC 3-Tier, 2-Tier, or AC Chair Cars. Select the 'Trains' tab on the homepage search console!"
+    triggers: ["train", "railway", "bullet", "berth", "eurostar"],
+    response: "We offer direct ticketing for high-speed railways including Eurostar, Shinkansen, Venice Simplon-Orient-Express, and Amtrak Acela. You can select premium berths or standard seating. Select the 'Trains' tab on the homepage search console!"
   },
   {
-    triggers: ["bus", "ksrtc", "msrtc", "redbus", "sleeper"],
-    response: "Sanchari Travels features live connections with local state bus stands (KSRTC, MSRTC) and private operators. Check out the 'Buses' tab for AC Sleepers and luxury Volvo multi-axle rides."
+    triggers: ["bus", "greyhound", "flixbus", "coach", "sleeper"],
+    response: "Sanchari Travels features live connections with international express lines like FlixBus, Greyhound, and National Express. Check out the 'Buses' tab for luxury double-decker sleepers and premium AC cruisers."
   },
   {
     triggers: ["refund", "cancel", "cancellation", "cancellation policy"],
@@ -432,7 +433,7 @@ export const chatbotResponseTree = [
   },
   {
     triggers: ["package", "deals", "packages", "discount"],
-    response: "We have amazing travel bundles like the **Goa Beach Romantic Escape** (Flight + Hotel + sunset cruise) or **Kashmir Valley Snow Paradise** which save you up to 25% compared to booking separately. Check out our **'Packages'** search tab above!"
+    response: "We have amazing travel bundles like the **Paris & French Riviera Escape** (Flight + Ritz-Carlton stay + cruise) or **Japan Imperial Heritage Tour** which save you up to 25% compared to booking separately. Check out our **'Packages'** search tab above!"
   },
   {
     triggers: ["promo", "coupon", "code", "discount code"],

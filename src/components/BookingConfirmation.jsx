@@ -35,11 +35,11 @@ export default function BookingConfirmation({ booking, setView }) {
               <Plane size={20} style={{ transform: 'rotate(45deg)' }} />
             )}
             <span style={{ fontWeight: 700, letterSpacing: '0.05em', fontSize: '0.85rem', textTransform: 'uppercase' }}>
-              {isHotel ? 'Hotel Voucher' : isPackage ? 'Tour Package Pass' : type === 'trains' ? 'IRCTC E-Ticket' : type === 'buses' ? 'Bus Travel Ticket' : 'Boarding Pass'}
+              {isHotel ? 'Hotel Voucher' : isPackage ? 'Tour Package Pass' : type === 'trains' ? 'Train E-Ticket' : type === 'buses' ? 'Bus Travel Ticket' : 'Boarding Pass'}
             </span>
           </div>
           <div style={{ fontSize: '0.85rem', fontWeight: 600 }}>
-            {isHotel ? 'CHECK-IN VOUCHER' : type === 'trains' ? 'INDIAN RAILWAYS E-TICKET' : type === 'buses' ? 'STATE/PRIVATE BUS TICKET' : 'BOARDING TICKET'}
+            {isHotel ? 'CHECK-IN VOUCHER' : type === 'trains' ? 'HIGH-SPEED RAILWAY TICKET' : type === 'buses' ? 'EXPRESS COACH TICKET' : 'BOARDING TICKET'}
           </div>
         </div>
 
@@ -111,7 +111,7 @@ export default function BookingConfirmation({ booking, setView }) {
             <div>
               <div className="pass-field-label">Amount Paid</div>
               <div className="pass-field-val" style={{ color: 'var(--secondary)' }}>
-                ₹{billing.totalPaid.toLocaleString()}
+                ${billing.totalPaid.toLocaleString()}
               </div>
             </div>
 

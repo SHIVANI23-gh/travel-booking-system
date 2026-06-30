@@ -265,11 +265,11 @@ export default function ListingGrid({ type, listings, onSelect, sortBy, setSortB
                   <div className="flight-action-block">
                     <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px', justifyContent: 'center' }}>
                       <span style={{ textDecoration: 'line-through', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                        ₹{originalPrice.toLocaleString()}
+                        ${originalPrice.toLocaleString()}
                       </span>
-                      <span className="price-tag">₹{item.price.toLocaleString()}</span>
+                      <span className="price-tag">${item.price.toLocaleString()}</span>
                     </div>
-                    <div className="price-sub" style={{ color: 'var(--secondary)', fontWeight: 600 }}>Save ₹{discount}! per traveler</div>
+                    <div className="price-sub" style={{ color: 'var(--secondary)', fontWeight: 600 }}>Save ${discount}! per traveler</div>
                     <button className="book-now-btn" onClick={() => onSelect(item)}>
                       Choose Seats
                       <ArrowRight size={16} />
@@ -287,7 +287,7 @@ export default function ListingGrid({ type, listings, onSelect, sortBy, setSortB
                     </div>
                     <div>
                       <div className="airline-name">{item.name}</div>
-                      <div className="flight-code" style={{ color: 'var(--primary)' }}>IRCTC #{item.code}</div>
+                      <div className="flight-code" style={{ color: 'var(--primary)' }}>Express Train #{item.code}</div>
                     </div>
                     <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: '4px', marginRight: '36px' }}>
                       <span className="star-rating">
@@ -318,7 +318,7 @@ export default function ListingGrid({ type, listings, onSelect, sortBy, setSortB
                   </div>
 
                   <div className="flight-action-block">
-                    <div className="price-tag">₹{item.price.toLocaleString()}</div>
+                    <div className="price-tag">${item.price.toLocaleString()}</div>
                     <div className="price-sub">AC 3-Tier base</div>
                     <div style={{ fontSize: '0.75rem', color: 'var(--secondary)', marginBottom: '8px', fontWeight: 600 }}>
                       {item.seatsAvailable} berths left
@@ -371,7 +371,7 @@ export default function ListingGrid({ type, listings, onSelect, sortBy, setSortB
                   </div>
 
                   <div className="flight-action-block">
-                    <div className="price-tag">₹{item.price.toLocaleString()}</div>
+                    <div className="price-tag">${item.price.toLocaleString()}</div>
                     <div className="price-sub">standard fare</div>
                     <div style={{ fontSize: '0.75rem', color: 'var(--danger)', marginBottom: '8px', fontWeight: 600 }}>
                       {item.seatsAvailable} seats left
@@ -434,9 +434,9 @@ export default function ListingGrid({ type, listings, onSelect, sortBy, setSortB
                       <div>
                         <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px' }}>
                           <span style={{ textDecoration: 'line-through', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                            ₹{originalPrice.toLocaleString()}
+                            ${originalPrice.toLocaleString()}
                           </span>
-                          <span className="price-tag">₹{item.price.toLocaleString()}</span>
+                          <span className="price-tag">${item.price.toLocaleString()}</span>
                         </div>
                         <div className="price-sub">per night</div>
                       </div>
@@ -496,9 +496,9 @@ export default function ListingGrid({ type, listings, onSelect, sortBy, setSortB
                       <div>
                         <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px' }}>
                           <span style={{ textDecoration: 'line-through', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                            ₹{originalPrice.toLocaleString()}
+                            ${originalPrice.toLocaleString()}
                           </span>
-                          <span className="price-tag">₹{item.price.toLocaleString()}</span>
+                          <span className="price-tag">${item.price.toLocaleString()}</span>
                         </div>
                         <div className="price-sub">total per person</div>
                       </div>

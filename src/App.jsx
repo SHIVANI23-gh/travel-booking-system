@@ -205,11 +205,11 @@ export default function App() {
     // Reset filters for new search types
     setFilters({
       maxPrice: 
-        params.type === 'flights' ? 30000 : 
-        params.type === 'hotels' ? 90000 : 
-        params.type === 'packages' ? 95000 : 
-        params.type === 'trains' ? 10000 : 
-        5000,
+        params.type === 'flights' ? 3000 : 
+        params.type === 'hotels' ? 2500 : 
+        params.type === 'packages' ? 5000 : 
+        params.type === 'trains' ? 500 : 
+        150,
       ratings: [],
       stops: [],
       amenities: []
@@ -222,16 +222,16 @@ export default function App() {
     if (params.type === 'flights') {
       steps = [
         "📡 Initiating handshake with Sanchari reservation nodes...",
-        "✈️ Verifying Vistara, IndiGo & Air India live flight seats...",
-        "🏨 Checking room availability at Taj & Leela Palaces...",
-        "💸 Fetching real-time tariffs & validating taxes database...",
+        "✈️ Verifying British Airways, Singapore Airlines & Emirates live flight seats...",
+        "🏨 Checking room availability at The Ritz-Carlton & Aman Resorts...",
+        "💸 Fetching real-time tariffs & validating global tax databases...",
         "🔒 Connection secured via SSL. Syncing local ticket buffers...",
         "✅ Sync complete! Opening search console..."
       ];
     } else if (params.type === 'hotels') {
       steps = [
-        "📡 Querying global hotel endpoints for Indian cities...",
-        "🏨 Scanning live room availability at Taj Resorts & Leela Palace...",
+        "📡 Querying global hotel endpoints for international cities...",
+        "🏨 Scanning live room availability at Ritz-Carlton, Aman & Marina Bay Sands...",
         "🏊 Checking amenities status (WiFi, private pools, beachfronts)...",
         "💸 Resolving seasonal discount tariffs & taxes...",
         "🔒 SSL tunnel active. Fetching luxury suite listings...",
@@ -240,7 +240,7 @@ export default function App() {
     } else if (params.type === 'packages') {
       steps = [
         "📡 Connecting to tourism packages database...",
-        "🌴 Bundling flight logs with Taj hotel suites reservations...",
+        "🌴 Bundling flight logs with Ritz-Carlton hotel suites reservations...",
         "⛵ Querying local tour guides and private yacht itineraries...",
         "💸 Applying up to 25% package discounts & pricing...",
         "🔒 Encryption complete. Synced holiday itinerary bundles...",
@@ -248,17 +248,17 @@ export default function App() {
       ];
     } else if (params.type === 'trains') {
       steps = [
-        "📡 Connecting to IRCTC Central Railway database servers...",
-        "🚂 Querying train schedules & platforms for Delhi/Mumbai/Jaipur...",
-        "🛤️ Checking AC coach availability (3A, 2A, 1A) on Rajdhani...",
-        "💸 Validating dynamic pricing quotas & concession tariffs...",
-        "🔒 Local token synced with station booking terminal...",
+        "📡 Connecting to International Rail reservation servers...",
+        "🚂 Querying high-speed schedules & platforms for Eurostar & Shinkansen...",
+        "🛤️ Checking cabin class availability on premium lines...",
+        "💸 Validating dynamic pricing quotas & seat reservation tariffs...",
+        "🔒 Local token synced with regional booking terminal...",
         "✅ Railway seat charts ready!"
       ];
     } else if (params.type === 'buses') {
       steps = [
-        "📡 Accessing State Transport (MSRTC/KSRTC) terminal APIs...",
-        "🚌 Scanning sleeper/seater berth grids on private Volvo fleets...",
+        "📡 Accessing FlixBus & Greyhound express terminal APIs...",
+        "🚌 Scanning sleeper/seater seat grids on premium cruiser fleets...",
         "🛣️ Exchanging route schedules, boarding gates & pickup points...",
         "💸 Resolving passenger insurance & local tollway fees...",
         "🔒 Connection secure. Cached local bus inventory loaded...",
@@ -549,10 +549,10 @@ export default function App() {
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '30px', marginTop: '40px' }}>
                 {[
-                  { name: "Goa", tag: "Beach Paradise", desc: "Soak in pristine sandy coastlines, private pool villas, and fresh seafood.", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80", price: "₹15,500/night" },
-                  { name: "Mumbai", tag: "Urban Luxury", desc: "Experience historic Colaba architecture, Marine Drive, and Gateway views.", img: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=400&q=80", price: "₹18,000/night" },
-                  { name: "Srinagar (Kashmir)", tag: "Mountain Adventure", desc: "Cozy pine woods, gondola ride cable cars, and ski slopes of Gulmarg.", img: "https://images.unsplash.com/photo-1502784444187-359ac186c5bb?auto=format&fit=crop&w=400&q=80", price: "₹14,500/night" },
-                  { name: "Jaipur", tag: "Royal Heritage", desc: "Stay at imperial Maharaja palaces and explore historic Amer forts.", img: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=400&q=80", price: "₹22,000/night" }
+                  { name: "Paris", tag: "Romantic Escape", desc: "Soak in historic art, French cuisine, Seine boat cruises, and luxury hotels.", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80", price: "$350/night" },
+                  { name: "Singapore", tag: "Futuristic Oasis", desc: "Experience Marina Bay sands rooftop pools, Gardens by the Bay, and rich cuisines.", img: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=400&q=80", price: "$450/night" },
+                  { name: "Tokyo", tag: "Zen Luxury", desc: "Cozy imperial gardens, thermal Onsen baths, and Mount Fuji skyline views.", img: "https://images.unsplash.com/photo-1502784444187-359ac186c5bb?auto=format&fit=crop&w=400&q=80", price: "$650/night" },
+                  { name: "New York", tag: "Metropolitan Magic", desc: "Stay at legendary Fifth Avenue hotels and explore Central Park lanes.", img: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=400&q=80", price: "$550/night" }
                 ].map((dest, idx) => (
                   <div key={idx} className="package-card" style={{ cursor: 'pointer' }} onClick={() => handleSearch({ type: 'hotels', destination: dest.name, checkIn: '2026-07-15', checkOut: '2026-07-22', guests: 2 })}>
                     <div className="package-img-wrapper" style={{ height: '180px' }}>
@@ -795,7 +795,7 @@ export default function App() {
               <span style={{ fontSize: '1.4rem', color: 'var(--text-main)', fontWeight: 700 }}>Sanchari Travels</span>
             </div>
             <p style={{ lineHeight: '1.6', fontSize: '0.8rem' }}>
-              Experience the best of India. Seamless airline, IRCTC railway, and state bus terminal handshakes mapped dynamically for you.
+              Experience the best of global travel. Seamless airline, high-speed rail, and express bus terminal handshakes mapped dynamically for you.
             </p>
             <div style={{ display: 'flex', gap: '12px', marginTop: '8px' }}>
               {['Facebook', 'Twitter', 'Instagram', 'LinkedIn'].map((social) => (
@@ -838,7 +838,7 @@ export default function App() {
               <li><button onClick={() => { setSearchType('flights'); setView('results'); }} style={{ background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', fontSize: '0.8rem', textAlign: 'left' }}>Book Flights</button></li>
               <li><button onClick={() => { setSearchType('hotels'); setView('results'); }} style={{ background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', fontSize: '0.8rem', textAlign: 'left' }}>Luxury Hotel Stays</button></li>
               <li><button onClick={() => { setSearchType('packages'); setView('results'); }} style={{ background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', fontSize: '0.8rem', textAlign: 'left' }}>Holiday Packages</button></li>
-              <li><button onClick={() => { setSearchType('trains'); setView('results'); }} style={{ background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', fontSize: '0.8rem', textAlign: 'left' }}>IRCTC Railways</button></li>
+              <li><button onClick={() => { setSearchType('trains'); setView('results'); }} style={{ background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', fontSize: '0.8rem', textAlign: 'left' }}>High-Speed Rail</button></li>
             </ul>
           </div>
 
@@ -848,7 +848,7 @@ export default function App() {
             <ul style={{ listStyle: 'none', padding: '0', display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '0.8rem', lineHeight: '1.5' }}>
               <li>📞 1-800-SANCHARI (24/7 Helpline)</li>
               <li>📧 support@sancharitravels.com</li>
-              <li>🏢 4th Floor, Taj Chambers, Colaba, Mumbai, India</li>
+              <li>🏢 45 Park Avenue, Midtown Manhattan, New York, NY, USA</li>
               <li style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--secondary)', fontWeight: 600 }}>
                 <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--secondary)', display: 'inline-block', animation: 'pulse 1.5s infinite' }}></span>
                 All Terminals Live

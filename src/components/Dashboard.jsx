@@ -69,7 +69,7 @@ export default function Dashboard({ bookings, onCancelBooking, onEditTraveler, s
         <div style={{ background: 'var(--bg-secondary)', border: '1px solid var(--glass-border)', padding: '24px', borderRadius: '16px', display: 'flex', flexDirection: 'column', gap: '6px', position: 'relative', overflow: 'hidden' }}>
           <div style={{ position: 'absolute', top: '16px', right: '16px', background: 'rgba(16, 185, 129, 0.1)', color: 'var(--secondary)', padding: '4px 8px', borderRadius: '10px', fontSize: '0.65rem', fontWeight: 600 }}>SIMULATOR</div>
           <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 500 }}>Refund Balance Wallet</span>
-          <span style={{ fontSize: '2.2rem', fontWeight: 800, color: 'var(--accent)' }}>₹{refundCredits.toLocaleString()}</span>
+          <span style={{ fontSize: '2.2rem', fontWeight: 800, color: 'var(--accent)' }}>${refundCredits.toLocaleString()}</span>
           <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Credited immediately on cancellation</span>
         </div>
       </div>
@@ -187,7 +187,7 @@ export default function Dashboard({ bookings, onCancelBooking, onEditTraveler, s
                     <div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                         <span style={{ fontWeight: 700, fontSize: '1.2rem', textTransform: 'uppercase', color: 'var(--text-main)' }}>
-                          {isHotel ? 'Hotel Stay Voucher' : isPackage ? 'Tour Package' : isFlight ? 'Flight Boarding Pass' : isTrain ? 'IRCTC E-Ticket' : 'State Bus Ticket'}
+                           {isHotel ? 'Hotel Stay Voucher' : isPackage ? 'Tour Package' : isFlight ? 'Flight Boarding Pass' : isTrain ? 'Train E-Ticket' : 'Express Bus Ticket'}
                         </span>
                         <span className={`dashboard-card-status ${status}`} style={{ position: 'static', margin: '0' }}>
                           {status}
@@ -307,7 +307,7 @@ export default function Dashboard({ bookings, onCancelBooking, onEditTraveler, s
                   <div>
                     <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Amount Paid via Card</span>
                     <div style={{ fontSize: '1.4rem', fontWeight: 800, color: isCanceled ? 'var(--text-muted)' : 'var(--secondary)' }}>
-                      ₹{billing.totalPaid.toLocaleString()}
+                      ${billing.totalPaid.toLocaleString()}
                     </div>
                   </div>
 
@@ -338,7 +338,7 @@ export default function Dashboard({ bookings, onCancelBooking, onEditTraveler, s
                           className="action-btn btn-danger btn-secondary" 
                           style={{ padding: '8px 16px', fontSize: '0.85rem', color: '#fff', border: 'none', background: 'var(--danger)' }}
                           onClick={() => {
-                            if (confirm("Are you sure you want to cancel this trip? Sanchari simulation will credit ₹" + billing.totalPaid.toLocaleString() + " back to your wallet instantly.")) {
+                            if (confirm("Are you sure you want to cancel this trip? Sanchari simulation will credit $" + billing.totalPaid.toLocaleString() + " back to your wallet instantly.")) {
                               onCancelBooking(id);
                             }
                           }}

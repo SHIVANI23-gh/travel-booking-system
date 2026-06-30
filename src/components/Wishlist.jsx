@@ -160,7 +160,7 @@ export default function Wishlist({ favorites, onRemoveFavorite, onBookItem, setV
                     </div>
 
                     <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: '1.4', marginBottom: '20px', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
-                      {item.description || (isFlight ? `Round-trip/One-way direct flight. Standard luggage allowance of ${item.baggage} included.` : isTrain ? `Premium IRCTC service with halts at ${item.stops} stations.` : `Operator: ${item.operator}. Class type: ${item.type}.`)}
+                      {item.description || (isFlight ? `Round-trip/One-way direct flight. Standard luggage allowance of ${item.baggage} included.` : isTrain ? `Premium high-speed service with halts at ${item.stops} stations.` : `Operator: ${item.operator}. Class type: ${item.type}.`)}
                     </p>
                   </div>
 
@@ -175,7 +175,7 @@ export default function Wishlist({ favorites, onRemoveFavorite, onBookItem, setV
                   }}>
                     <div>
                       <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text-main)' }}>
-                        ₹{item.price.toLocaleString()}
+                        ${item.price.toLocaleString()}
                       </div>
                       <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
                         {isHotel ? 'per night' : isPackage ? 'per person' : 'base fare'}
