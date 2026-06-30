@@ -516,21 +516,21 @@ export default function App() {
           width: '100vw',
           height: '100vh',
           zIndex: 9999,
-          background: 'rgba(6, 6, 9, 0.85)',
+          background: 'rgba(255, 255, 255, 0.8)',
           backdropFilter: 'blur(20px)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center'
         }}>
           <div className="server-connecting-box" style={{
-            background: 'rgba(255, 255, 255, 0.05)',
-            border: '1px solid rgba(255, 255, 255, 0.08)',
+            background: 'var(--glass-bg)',
+            border: '1px solid var(--glass-border)',
             borderRadius: '24px',
             padding: '40px',
             textAlign: 'center',
             maxWidth: '450px',
             width: '90%',
-            boxShadow: '0 30px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+            boxShadow: 'var(--glass-shadow)',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -542,7 +542,7 @@ export default function App() {
               <div className="radar-ring"></div>
               <Compass size={40} style={{ color: 'var(--primary)', animation: 'spin 4s linear infinite', zIndex: 5 }} />
             </div>
-            <h3 style={{ fontSize: '1.4rem', fontFamily: 'var(--font-display)', color: '#fff', fontWeight: 800, margin: '8px 0 0 0' }}>
+            <h3 style={{ fontSize: '1.4rem', fontFamily: 'var(--font-display)', color: 'var(--text-main)', fontWeight: 800, margin: '8px 0 0 0' }}>
               Securing Reservation Nodes
             </h3>
             <div className="server-step-text" style={{
@@ -554,15 +554,15 @@ export default function App() {
               alignItems: 'center',
               justifyContent: 'center',
               lineHeight: '1.4',
-              background: 'rgba(0, 0, 0, 0.3)',
+              background: 'rgba(255, 94, 132, 0.05)',
               width: '100%',
               padding: '12px',
               borderRadius: '12px',
-              border: '1px solid rgba(255, 255, 255, 0.05)'
+              border: '1px solid var(--glass-border)'
             }}>
               {connectionStepText}
             </div>
-            <p style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.4)' }}>
+            <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
               SSL Secure Handshake • API Version 4.1.2 • Sanchari Cloud
             </p>
           </div>
