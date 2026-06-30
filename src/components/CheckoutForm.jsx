@@ -5,6 +5,13 @@ export default function CheckoutForm({ type, selectedItem, searchParams, customi
   const travelers = searchParams.travelers || searchParams.guests || 1;
   const isHotel = type === 'hotels';
   const isPackage = type === 'packages';
+
+  const getCardType = () => {
+    const raw = cardNumber.replace(/\s/g, '');
+    if (raw.startsWith('4')) return 'visa';
+    if (raw.startsWith('5')) return 'mastercard';
+    return 'default';
+  };
   
   // Passenger Form State prefilled from Customer Profile
   const [passengerName, setPassengerName] = useState(profile?.name || '');
@@ -208,7 +215,21 @@ export default function CheckoutForm({ type, selectedItem, searchParams, customi
                 <div className="card-face front">
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <div className="card-chip"></div>
-                    <div className="card-logo">SANCHARI</div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      {getCardType() === 'visa' && (
+                        <span style={{ fontSize: '1.25rem', fontWeight: 900, color: '#f3f4f6', fontStyle: 'italic', letterSpacing: '0.05em' }}>VISA</span>
+                      )}
+                      {getCardType() === 'mastercard' && (
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                          <div style={{ width: '18px', height: '18px', borderRadius: '50%', background: '#ff5e5e', opacity: 0.9 }}></div>
+                          <div style={{ width: '18px', height: '18px', borderRadius: '50%', background: '#ffc107', opacity: 0.9, marginLeft: '-10px' }}></div>
+                          <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#fff', marginLeft: '2px' }}>mastercard</span>
+                        </div>
+                      )}
+                      {getCardType() === 'default' && (
+                        <div className="card-logo">SANCHARI</div>
+                      )}
+                    </div>
                   </div>
                   <div className="card-number-display">
                     {cardNumber || '•••• •••• •••• ••••'}

@@ -505,22 +505,61 @@ export default function App() {
     <div className="app-container">
       {/* Live Server Connecting Simulation Screen */}
       {isConnectingToServer && (
-        <div className="server-connecting-screen">
-          <div className="server-connecting-box">
-            <div className="server-pulse-icon">
-              <Compass size={38} className="loading-spinner-icon" style={{ animation: 'float 2s ease-in-out infinite' }} />
+        <div className="server-connecting-screen" style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          zIndex: 9999,
+          background: 'rgba(6, 6, 9, 0.85)',
+          backdropFilter: 'blur(20px)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}>
+          <div className="server-connecting-box" style={{
+            background: 'rgba(255, 255, 255, 0.05)',
+            border: '1px solid rgba(255, 255, 255, 0.08)',
+            borderRadius: '24px',
+            padding: '40px',
+            textAlign: 'center',
+            maxWidth: '450px',
+            width: '90%',
+            boxShadow: '0 30px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '16px'
+          }}>
+            <div className="radar-pulse-container">
+              <div className="radar-ring"></div>
+              <div className="radar-ring"></div>
+              <div className="radar-ring"></div>
+              <Compass size={40} style={{ color: 'var(--primary)', animation: 'spin 4s linear infinite', zIndex: 5 }} />
             </div>
-            <h3 style={{ fontSize: '1.4rem', fontFamily: 'var(--font-display)', color: 'var(--text-main)' }}>
-              Connecting to Reservation Terminals...
+            <h3 style={{ fontSize: '1.4rem', fontFamily: 'var(--font-display)', color: '#fff', fontWeight: 800, margin: '8px 0 0 0' }}>
+              Securing Reservation Nodes
             </h3>
-            <div className="server-progress-bar">
-              <div className="server-progress-fill"></div>
-            </div>
-            <div className="server-step-text">
+            <div className="server-step-text" style={{
+              fontFamily: 'monospace',
+              fontSize: '0.85rem',
+              color: 'var(--primary)',
+              minHeight: '40px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              lineHeight: '1.4',
+              background: 'rgba(0, 0, 0, 0.3)',
+              width: '100%',
+              padding: '12px',
+              borderRadius: '12px',
+              border: '1px solid rgba(255, 255, 255, 0.05)'
+            }}>
               {connectionStepText}
             </div>
-            <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-              SSL Secure Handshake • API Version 4.1.2 • Sanchari Travels Cloud Engine
+            <p style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.4)' }}>
+              SSL Secure Handshake • API Version 4.1.2 • Sanchari Cloud
             </p>
           </div>
         </div>
@@ -581,7 +620,7 @@ export default function App() {
                 </div>
                 <div className="testimonials-grid">
                   {testimonials.map((t) => (
-                    <div key={t.id} className="testimonial-card">
+                    <div key={t.id} className="testimonial-card-premium">
                       <div>
                         <div style={{ display: 'flex', gap: '2px', color: 'var(--warning)', marginBottom: '16px' }}>
                           {[...Array(t.rating)].map((_, i) => (

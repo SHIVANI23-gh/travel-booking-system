@@ -2164,3 +2164,158 @@ h1, h2, h3, h4, h5, h6 {
 .nav-logout-btn:hover {
   background: rgba(239, 68, 68, 0.08) !important;
 }
+
+/* ==========================================
+   PORTFOLIO-GRADE STARTUP OVERHAUL OVERRIDES
+   ========================================== */
+
+/* Glow ambient animations */
+@keyframes ambientGlow {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.95); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+body {
+  position: relative;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(255, 94, 132, 0.04) 0%, transparent 45%),
+    radial-gradient(circle at 90% 80%, rgba(46, 196, 182, 0.04) 0%, transparent 45%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+/* Background Glowing Blurs */
+body::before, body::after {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: -1;
+  opacity: 0.5;
+  pointer-events: none;
+}
+body::before {
+  top: 15%;
+  left: 10%;
+  background: rgba(255, 94, 132, 0.15);
+  animation: ambientGlow 20s infinite ease-in-out;
+}
+body::after {
+  bottom: 20%;
+  right: 10%;
+  background: rgba(46, 196, 182, 0.15);
+  animation: ambientGlow 25s infinite ease-in-out reverse;
+}
+
+/* Input Overhaul */
+.search-input {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  font-weight: 500;
+}
+.search-input:focus {
+  border-color: var(--primary);
+  background: var(--bg-primary);
+  box-shadow: 0 0 0 4px rgba(255, 94, 132, 0.12), 0 4px 12px rgba(255, 94, 132, 0.05);
+  transform: translateY(-1px);
+}
+
+/* Traveler Counter Popover */
+.traveler-popover {
+  animation: popoverFade 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: top right;
+}
+@keyframes popoverFade {
+  from { opacity: 0; transform: scale(0.95) translateY(-8px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Skyscanner-style Flight Timeline Route Progress Bar */
+.timeline-line {
+  background: linear-gradient(90deg, var(--bg-tertiary) 0%, var(--primary) 50%, var(--bg-tertiary) 100%);
+  position: relative;
+}
+.timeline-line::before {
+  content: '✈️';
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  font-size: 0.95rem;
+  z-index: 2;
+  transition: all 0.5s ease;
+}
+.flight-card:hover .timeline-line::before {
+  left: 85%;
+}
+
+/* Premium Credit Card Styling */
+.credit-card-visual {
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.25);
+}
+.card-face.front {
+  background: linear-gradient(135deg, #1e1e2f 0%, #111119 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.card-face.back {
+  background: linear-gradient(135deg, #111119 0%, #08080c 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.card-logo {
+  font-size: 1.3rem;
+  letter-spacing: 0.1em;
+  background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.6) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.card-number-display {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.55rem;
+  letter-spacing: 0.12em;
+  color: #f3f4f6;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+}
+
+/* Rotating Radar wave indicator */
+.radar-pulse-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+.radar-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  opacity: 0;
+  animation: radarWave 2s infinite cubic-bezier(0.1, 0.8, 0.3, 1);
+}
+.radar-ring:nth-child(2) { animation-delay: 0.6s; }
+.radar-ring:nth-child(3) { animation-delay: 1.2s; }
+@keyframes radarWave {
+  0% { transform: scale(0.3); opacity: 0.8; }
+  100% { transform: scale(1.2); opacity: 0; }
+}
+
+/* Testimonial card hover lift */
+.testimonial-card-premium {
+  background: var(--bg-secondary);
+  border: 1px solid var(--glass-border);
+  padding: 24px;
+  border-radius: var(--radius-md);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.testimonial-card-premium:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--glass-shadow);
+  border-color: rgba(255, 94, 132, 0.3);
+}
+
