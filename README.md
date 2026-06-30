@@ -1,6 +1,10 @@
 # Sanchari Travels - Travel Booking System
 
-### 🔗 Live Website: **[https://shivani23-gh.github.io/travel-booking-system/](https://shivani23-gh.github.io/travel-booking-system/)**
+| Resource | Link |
+| :--- | :--- |
+| **GitHub Repository** | [travel-booking-system Repo](https://github.com/SHIVANI23-gh/travel-booking-system) |
+| **Live Site Link** | [Sanchari Travels Live App](https://shivani23-gh.github.io/travel-booking-system/) |
+
 
 A premium, highly interactive, and visually stunning travel booking web application built with **React** and **Vanilla CSS**. The application adopts an elegant White & Baby Pink aesthetic and simulates real-time connection handshakes with reservation terminal APIs.
 
