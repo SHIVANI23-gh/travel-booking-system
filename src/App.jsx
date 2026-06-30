@@ -502,7 +502,11 @@ export default function App() {
   }
 
   return (
-    <div className="app-container">
+    <div className="app-container" style={{
+      backgroundColor: view === 'results' ? '#ffffff' : 'transparent',
+      backgroundImage: view === 'results' ? 'none' : undefined,
+      transition: 'background-color 0.4s ease'
+    }}>
       {/* Live Server Connecting Simulation Screen */}
       {isConnectingToServer && (
         <div className="server-connecting-screen" style={{
