@@ -228,7 +228,7 @@ export default function Dashboard({ bookings, onCancelBooking, onEditTraveler, s
                     <div style={{ fontWeight: 700, fontSize: '1.1rem', marginTop: '4px', display: 'flex', alignItems: 'center', gap: '6px' }}>
                       <Calendar size={16} className="color-primary" style={{ color: 'var(--primary)' }} />
                       <span>
-                        {isHotel ? `${searchParams.checkIn} to ${searchParams.checkOut}` : isPackage ? searchParams.date : `${searchParams.date}`}
+                        {isHotel ? `${searchParams.checkIn} to ${searchParams.checkOut}` : isPackage ? searchParams.date : `${item.selectedDate || searchParams.date}`}
                       </span>
                     </div>
                     {!isHotel && !isPackage && (

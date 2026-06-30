@@ -323,6 +323,11 @@ export default function CheckoutForm({ type, selectedItem, searchParams, customi
                   `Flight Class: ${searchParams.cabinClass.toUpperCase()} • Seat: ${customizations?.selectedSeats?.join(', ')}`
                 )}
               </div>
+              {!isHotel && (
+                <div style={{ fontSize: '0.85rem', color: 'var(--primary)', fontWeight: 600, marginTop: '8px' }}>
+                  📅 Date: {selectedItem.selectedDate || searchParams.date || searchParams.checkIn} {selectedItem.departureTime ? `(${selectedItem.departureTime})` : ''}
+                </div>
+              )}
             </div>
 
             <div className="order-summary-list">

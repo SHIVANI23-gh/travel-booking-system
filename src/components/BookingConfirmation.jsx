@@ -78,7 +78,7 @@ export default function BookingConfirmation({ booking, setView }) {
             <div>
               <div className="pass-field-label">Dates / Schedule</div>
               <div className="pass-field-val">
-                {isHotel ? searchParams.checkIn : isPackage ? searchParams.date : `${searchParams.date} (${item.departureTime})`}
+                {isHotel ? searchParams.checkIn : isPackage ? searchParams.date : `${item.selectedDate || searchParams.date} (${item.departureTime})`}
               </div>
             </div>
 

@@ -1,9 +1,193 @@
 import React, { useState } from 'react';
 import { Plane, Star, MapPin, Check, Briefcase, Calendar, Clock, DollarSign, ArrowRight, Train, Bus, Heart, Search } from 'lucide-react';
 
-export default function ListingGrid({ type, listings, onSelect, sortBy, setSortBy, favorites = [], onToggleFavorite }) {
+export default function ListingGrid({ type, listings, onSelect, sortBy, setSortBy, favorites = [], onToggleFavorite, searchParams }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [activePills, setActivePills] = useState([]);
+  
+  const [selectedDate, setSelectedDate] = useState(() => {
+    return searchParams?.date || searchParams?.checkIn || new Date().toISOString().split('T')[0];
+  });
+  const [selectedSlots, setSelectedSlots] = useState({});
+
+  const getDatesList = () => {
+    const startDateStr = searchParams?.date || searchParams?.checkIn || new Date().toISOString().split('T')[0];
+    const startDate = new Date(startDateStr);
+    const dates = [];
+    const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    
+    for (let i = 0; i < 7; i++) {
+      const d = new Date(startDate);
+      d.setDate(startDate.getDate() + i);
+      dates.push({
+        dateStr: d.toISOString().split('T')[0],
+        day: weekdays[d.getDay()],
+        date: d.getDate(),
+        month: months[d.getMonth()]
+      });
+    }
+    return dates;
+  };
+
+  const getSlotsForItem = (item) => {
+    if (type === 'hotels' || type === 'packages') return [];
+    return [
+      { id: 'slot-1', label: '🌅 Morning', time: '07:30 AM', offset: 0.9 },
+      { id: 'slot-2', label: '☀️ Afternoon', time: '01:15 PM', offset: 0.85 },
+      { id: 'slot-3', label: '🌆 Evening', time: '06:00 PM', offset: 1.2 },
+      { id: 'slot-4', label: '🌙 Night', time: '10:20 PM', offset: 0.95 }
+    ].map(slot => {
+      const finalPrice = Math.round(item.price * slot.offset);
+      return {
+        ...slot,
+        price: finalPrice
+      };
+    });
+  };
+
+  const handleSelectSlot = (itemId, slotIndex) => {
+    setSelectedSlots(prev => ({
+      ...prev,
+      [itemId]: slotIndex
+    }));
+  };
+
+  const handleCardSelect = (item) => {
+    const slots = getSlotsForItem(item);
+    if (slots.length > 0) {
+      const selectedIndex = selectedSlots[item.id] || 0;
+      const chosenSlot = slots[selectedIndex];
+      
+      const ratio = chosenSlot.price / item.price;
+      const modifiedCabinClasses = {};
+      if (item.cabinClasses) {
+        Object.keys(item.cabinClasses).forEach(k => {
+          modifiedCabinClasses[k] = {
+            ...item.cabinClasses[k],
+            price: Math.round(item.cabinClasses[k].price * ratio)
+          };
+        });
+      }
+
+      const modifiedItem = {
+        ...item,
+        price: chosenSlot.price,
+        departureTime: chosenSlot.time,
+        selectedDate: selectedDate,
+        selectedSlotLabel: chosenSlot.label,
+        cabinClasses: Object.keys(modifiedCabinClasses).length > 0 ? modifiedCabinClasses : item.cabinClasses
+      };
+      onSelect(modifiedItem);
+    } else {
+      const modifiedItem = {
+        ...item,
+        selectedDate: selectedDate
+      };
+      onSelect(modifiedItem);
+    }
+  };
+
+  const renderDateRibbon = () => {
+    if (type === 'packages') return null;
+    const dates = getDatesList();
+    return (
+      <div className="date-ribbon-container" style={{ marginBottom: '24px' }}>
+        <h4 style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '10px', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600 }}>
+          📅 Select Departure Date
+        </h4>
+        <div className="date-ribbon-scroll" style={{
+          display: 'flex',
+          gap: '12px',
+          overflowX: 'auto',
+          paddingBottom: '8px',
+          scrollbarWidth: 'thin'
+        }}>
+          {dates.map((d, index) => {
+            const isActive = selectedDate === d.dateStr;
+            return (
+              <button
+                type="button"
+                key={index}
+                onClick={() => setSelectedDate(d.dateStr)}
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  padding: '10px 16px',
+                  borderRadius: '12px',
+                  border: '1px solid',
+                  borderColor: isActive ? 'var(--primary)' : 'var(--glass-border)',
+                  background: isActive ? 'linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%)' : 'var(--bg-secondary)',
+                  color: isActive ? '#fff' : 'var(--text-main)',
+                  cursor: 'pointer',
+                  minWidth: '75px',
+                  boxShadow: isActive ? '0 4px 12px rgba(255, 94, 132, 0.2)' : 'none',
+                  transition: 'all 0.2s ease',
+                  outline: 'none'
+                }}
+              >
+                <span style={{ fontSize: '0.75rem', fontWeight: isActive ? 600 : 400, opacity: isActive ? 0.9 : 0.6 }}>{d.day}</span>
+                <span style={{ fontSize: '1.25rem', fontWeight: 800, margin: '2px 0' }}>{d.date}</span>
+                <span style={{ fontSize: '0.75rem', fontWeight: isActive ? 600 : 400, opacity: isActive ? 0.9 : 0.6 }}>{d.month}</span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    );
+  };
+
+  const renderSlotsSelector = (item) => {
+    const slots = getSlotsForItem(item);
+    if (slots.length === 0) return null;
+
+    const selectedIndex = selectedSlots[item.id] || 0;
+
+    return (
+      <div className="time-slots-container" style={{ margin: '14px 0', borderTop: '1px dashed var(--glass-border)', paddingTop: '12px' }}>
+        <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '8px', fontWeight: 600 }}>
+          🕒 SELECT TIMING & PRICE
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '8px' }}>
+          {slots.map((slot, index) => {
+            const isSelected = selectedIndex === index;
+            return (
+              <button
+                type="button"
+                key={slot.id}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleSelectSlot(item.id, index);
+                }}
+                style={{
+                  padding: '8px',
+                  borderRadius: '8px',
+                  border: '1px solid',
+                  borderColor: isSelected ? 'var(--primary)' : 'var(--glass-border)',
+                  background: isSelected ? 'rgba(255, 94, 132, 0.08)' : 'var(--bg-secondary)',
+                  color: 'var(--text-main)',
+                  textAlign: 'left',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  outline: 'none'
+                }}
+              >
+                <span style={{ fontSize: '0.8rem', fontWeight: 700, color: isSelected ? 'var(--primary)' : 'var(--text-main)' }}>
+                  {slot.time}
+                </span>
+                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 500 }}>
+                  {slot.label} • ₹{slot.price.toLocaleString()}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    );
+  };
 
   const handleSortChange = (e) => {
     setSortBy(e.target.value);
@@ -154,6 +338,8 @@ export default function ListingGrid({ type, listings, onSelect, sortBy, setSortB
         {renderPills()}
       </div>
 
+      {renderDateRibbon()}
+
       <div className="listings-header">
         <div className="listings-count">
           Found <span>{filteredListings.length}</span> {filteredListings.length === 1 ? 'option' : 'options'}
@@ -225,9 +411,12 @@ export default function ListingGrid({ type, listings, onSelect, sortBy, setSortB
             );
 
             if (type === 'flights') {
-              // Custom discount indicator for Flights
+              const slots = getSlotsForItem(item);
+              const selectedIndex = selectedSlots[item.id] || 0;
+              const currentPrice = slots.length > 0 ? slots[selectedIndex].price : item.price;
+              const currentDepartureTime = slots.length > 0 ? slots[selectedIndex].time : item.departureTime;
               const discount = 900;
-              const originalPrice = item.price + discount;
+              const originalPrice = currentPrice + discount;
 
               return (
                 <div key={item.id} className="flight-card" style={{ position: 'relative' }}>
@@ -244,7 +433,7 @@ export default function ListingGrid({ type, listings, onSelect, sortBy, setSortB
 
                   <div className="flight-timeline">
                     <div className="timeline-node">
-                      <div className="timeline-time">{item.departureTime}</div>
+                      <div className="timeline-time">{currentDepartureTime}</div>
                       <div className="timeline-city">{item.departure.split(' ')[0]}</div>
                     </div>
                     
@@ -262,15 +451,17 @@ export default function ListingGrid({ type, listings, onSelect, sortBy, setSortB
                     </div>
                   </div>
 
+                  {renderSlotsSelector(item)}
+
                   <div className="flight-action-block">
                     <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px', justifyContent: 'center' }}>
                       <span style={{ textDecoration: 'line-through', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
                         ₹{originalPrice.toLocaleString()}
                       </span>
-                      <span className="price-tag">₹{item.price.toLocaleString()}</span>
+                      <span className="price-tag">₹{currentPrice.toLocaleString()}</span>
                     </div>
                     <div className="price-sub" style={{ color: 'var(--secondary)', fontWeight: 600 }}>Save ₹{discount}! per traveler</div>
-                    <button className="book-now-btn" onClick={() => onSelect(item)}>
+                    <button className="book-now-btn" onClick={() => handleCardSelect(item)}>
                       Choose Seats
                       <ArrowRight size={16} />
                     </button>
@@ -278,6 +469,11 @@ export default function ListingGrid({ type, listings, onSelect, sortBy, setSortB
                 </div>
               );
             } else if (type === 'trains') {
+              const slots = getSlotsForItem(item);
+              const selectedIndex = selectedSlots[item.id] || 0;
+              const currentPrice = slots.length > 0 ? slots[selectedIndex].price : item.price;
+              const currentDepartureTime = slots.length > 0 ? slots[selectedIndex].time : item.departureTime;
+
               return (
                 <div key={item.id} className="flight-card" style={{ position: 'relative' }}>
                   {heartButton}
@@ -299,7 +495,7 @@ export default function ListingGrid({ type, listings, onSelect, sortBy, setSortB
 
                   <div className="flight-timeline">
                     <div className="timeline-node">
-                      <div className="timeline-time">{item.departureTime}</div>
+                      <div className="timeline-time">{currentDepartureTime}</div>
                       <div className="timeline-city" title={item.departure}>{item.departure}</div>
                     </div>
                     
@@ -317,13 +513,15 @@ export default function ListingGrid({ type, listings, onSelect, sortBy, setSortB
                     </div>
                   </div>
 
+                  {renderSlotsSelector(item)}
+
                   <div className="flight-action-block">
-                    <div className="price-tag">₹{item.price.toLocaleString()}</div>
+                    <div className="price-tag">₹{currentPrice.toLocaleString()}</div>
                     <div className="price-sub">AC 3-Tier base</div>
                     <div style={{ fontSize: '0.75rem', color: 'var(--secondary)', marginBottom: '8px', fontWeight: 600 }}>
                       {item.seatsAvailable} berths left
                     </div>
-                    <button className="book-now-btn" onClick={() => onSelect(item)}>
+                    <button className="book-now-btn" onClick={() => handleCardSelect(item)}>
                       Select Berth
                       <ArrowRight size={16} />
                     </button>
@@ -331,6 +529,11 @@ export default function ListingGrid({ type, listings, onSelect, sortBy, setSortB
                 </div>
               );
             } else if (type === 'buses') {
+              const slots = getSlotsForItem(item);
+              const selectedIndex = selectedSlots[item.id] || 0;
+              const currentPrice = slots.length > 0 ? slots[selectedIndex].price : item.price;
+              const currentDepartureTime = slots.length > 0 ? slots[selectedIndex].time : item.departureTime;
+
               return (
                 <div key={item.id} className="flight-card" style={{ position: 'relative' }}>
                   {heartButton}
@@ -352,7 +555,7 @@ export default function ListingGrid({ type, listings, onSelect, sortBy, setSortB
 
                   <div className="flight-timeline">
                     <div className="timeline-node">
-                      <div className="timeline-time">{item.departureTime}</div>
+                      <div className="timeline-time">{currentDepartureTime}</div>
                       <div className="timeline-city" title={item.departure}>{item.departure}</div>
                     </div>
                     
@@ -370,13 +573,15 @@ export default function ListingGrid({ type, listings, onSelect, sortBy, setSortB
                     </div>
                   </div>
 
+                  {renderSlotsSelector(item)}
+
                   <div className="flight-action-block">
-                    <div className="price-tag">₹{item.price.toLocaleString()}</div>
+                    <div className="price-tag">₹{currentPrice.toLocaleString()}</div>
                     <div className="price-sub">standard fare</div>
                     <div style={{ fontSize: '0.75rem', color: 'var(--danger)', marginBottom: '8px', fontWeight: 600 }}>
                       {item.seatsAvailable} seats left
                     </div>
-                    <button className="book-now-btn" style={{ background: 'var(--secondary)' }} onClick={() => onSelect(item)}>
+                    <button className="book-now-btn" style={{ background: 'var(--secondary)' }} onClick={() => handleCardSelect(item)}>
                       Choose Seat
                       <ArrowRight size={16} />
                     </button>
@@ -440,7 +645,7 @@ export default function ListingGrid({ type, listings, onSelect, sortBy, setSortB
                         </div>
                         <div className="price-sub">per night</div>
                       </div>
-                      <button className="book-now-btn" onClick={() => onSelect(item)}>
+                      <button className="book-now-btn" onClick={() => handleCardSelect(item)}>
                         Select Room
                         <ArrowRight size={16} />
                       </button>
@@ -502,7 +707,7 @@ export default function ListingGrid({ type, listings, onSelect, sortBy, setSortB
                         </div>
                         <div className="price-sub">total per person</div>
                       </div>
-                      <button className="book-now-btn" onClick={() => onSelect(item)}>
+                      <button className="book-now-btn" onClick={() => handleCardSelect(item)}>
                         Book Package
                         <ArrowRight size={16} />
                       </button>

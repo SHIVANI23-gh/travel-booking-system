@@ -713,6 +713,7 @@ export default function App() {
                 setSortBy={setSortBy}
                 favorites={favorites}
                 onToggleFavorite={handleToggleFavorite}
+                searchParams={searchParams}
               />
             </div>
           </div>
