@@ -35,9 +35,9 @@ export default function Auth({ onAuthSuccess }) {
 
   const handleDemoLogin = () => {
     const demoUser = {
-      name: 'Shivani',
-      email: 'shivani@gmail.com',
-      phone: '+91 98765 43210',
+      name: 'Demo Traveler',
+      email: 'demo@sancharitravels.com',
+      phone: '+91 99999 88888',
       avatar: 'https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?auto=format&fit=crop&w=150&q=80'
     };
     onAuthSuccess(demoUser);
@@ -91,11 +91,11 @@ export default function Auth({ onAuthSuccess }) {
       // If no users registered yet, support "shivani@gmail.com" as default fallback if matching shivani credentials
       let user = savedUsers.find(u => u.email.toLowerCase() === email.toLowerCase() && u.password === password);
       
-      if (!user && email.toLowerCase() === 'shivani@gmail.com' && password === '123456') {
+      if (!user && email.toLowerCase() === 'demo@sancharitravels.com' && password === '123456') {
         user = {
-          name: 'Shivani',
-          email: 'shivani@gmail.com',
-          phone: '+91 98765 43210',
+          name: 'Demo Traveler',
+          email: 'demo@sancharitravels.com',
+          phone: '+91 99999 88888',
           avatar: 'https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?auto=format&fit=crop&w=150&q=80'
         };
       }
@@ -240,7 +240,7 @@ export default function Auth({ onAuthSuccess }) {
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    placeholder="Shivani Sen"
+                    placeholder="Aditya Sen"
                     required
                     style={{
                       width: '100%',
@@ -473,7 +473,7 @@ export default function Auth({ onAuthSuccess }) {
           }}
         >
           <Sparkles size={16} />
-          <span>Login with Demo User (Shivani)</span>
+          <span>Login with Demo User</span>
         </button>
 
         {/* Secure SSL footer check */}
